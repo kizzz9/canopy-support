@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Canopy — サポート</title>
+<title>Canopy — Support</title>
 <style>
 :root {
   --green-50: #f0fdf4;
@@ -35,7 +35,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Hero */
 .hero {
   background: linear-gradient(135deg, var(--green-900) 0%, var(--green-700) 50%, var(--green-600) 100%);
   color: white;
@@ -79,7 +78,6 @@ body {
   margin: 0 auto;
 }
 
-/* Language switcher */
 .lang-switch {
   position: absolute;
   top: 20px;
@@ -103,14 +101,12 @@ body {
   background: rgba(255,255,255,0.1);
 }
 
-/* Main */
 .container {
   max-width: 900px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* Section */
 .section {
   padding: 60px 0;
   border-bottom: 1px solid var(--gray-100);
@@ -145,7 +141,6 @@ body {
   margin-bottom: 32px;
 }
 
-/* Guide CTA */
 .cta-card {
   display: flex;
   align-items: center;
@@ -199,7 +194,6 @@ body {
   box-shadow: 0 4px 12px rgba(34,197,94,0.4);
 }
 
-/* Contact cards */
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -253,7 +247,6 @@ body {
 
 .contact-card a:hover { text-decoration: underline; }
 
-/* FAQ */
 .faq-list {
   display: flex;
   flex-direction: column;
@@ -297,7 +290,6 @@ body {
   margin-left: 38px;
 }
 
-/* Footer */
 .footer {
   text-align: center;
   padding: 40px 20px;
@@ -319,7 +311,6 @@ body {
   margin-bottom: 12px;
 }
 
-/* Responsive */
 @media (max-width: 600px) {
   .hero { padding: 60px 20px 40px; }
   .hero h1 { font-size: 1.8em; }
@@ -330,7 +321,6 @@ body {
   .contact-grid { grid-template-columns: 1fr; }
 }
 
-/* Dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --gray-50: #1a1a2e;
@@ -356,11 +346,11 @@ body {
 
 <!-- Hero -->
 <div class="hero">
-  <div class="lang-switch"><a href="./en/">English</a></div>
+  <div class="lang-switch"><a href="../">日本語</a></div>
   <div class="hero-content">
     <div class="hero-icon">🌳</div>
-    <h1>Canopy サポート</h1>
-    <p>お困りのことがあれば、こちらからお問い合わせください</p>
+    <h1>Canopy Support</h1>
+    <p>Need help? Find answers and get in touch with us here.</p>
   </div>
 </div>
 
@@ -369,15 +359,15 @@ body {
   <!-- Guide CTA -->
   <div class="section">
     <span class="section-label">Guide</span>
-    <h2>使い方ガイド</h2>
-    <p class="subtitle">Canopy の機能と操作方法をまとめたガイドページ</p>
+    <h2>User Guide</h2>
+    <p class="subtitle">A comprehensive guide to Canopy's features and how to use them</p>
 
     <div class="cta-card">
       <div class="cta-icon">📖</div>
       <div class="cta-content">
-        <h3>使い方ガイドを見る</h3>
-        <p>はじめての方はこちら。機能一覧・パネル操作・キーボードショートカット・エクスポート・CLI の使い方を解説しています。</p>
-        <a href="./guide/" class="cta-button">ガイドを開く</a>
+        <h3>Read the User Guide</h3>
+        <p>New to Canopy? Start here. Covers all features, panel operations, keyboard shortcuts, export formats, and CLI usage.</p>
+        <a href="../guide/en/" class="cta-button">Open Guide</a>
       </div>
     </div>
   </div>
@@ -385,26 +375,26 @@ body {
   <!-- Contact -->
   <div class="section">
     <span class="section-label">Contact</span>
-    <h2>お問い合わせ</h2>
-    <p class="subtitle">バグ報告・機能リクエスト・ご質問はこちらから</p>
+    <h2>Get in Touch</h2>
+    <p class="subtitle">Bug reports, feature requests, and questions</p>
 
     <div class="contact-grid">
       <div class="contact-card">
         <div class="contact-icon">🐛</div>
-        <h3>バグ報告</h3>
-        <p>不具合を見つけたら、再現手順とともにお知らせください。</p>
+        <h3>Bug Reports</h3>
+        <p>Found a bug? Please include steps to reproduce the issue.</p>
         <p style="margin-top: 12px;"><a href="https://github.com/kizzz9/canopy-support/issues">GitHub Issues</a></p>
       </div>
       <div class="contact-card">
         <div class="contact-icon">💡</div>
-        <h3>機能リクエスト</h3>
-        <p>「こんな機能がほしい」というアイデアをお聞かせください。</p>
+        <h3>Feature Requests</h3>
+        <p>Have an idea for a new feature? We'd love to hear it.</p>
         <p style="margin-top: 12px;"><a href="https://github.com/kizzz9/canopy-support/issues">GitHub Issues</a></p>
       </div>
       <div class="contact-card">
         <div class="contact-icon">❓</div>
-        <h3>質問・その他</h3>
-        <p>使い方や仕様についてのご質問もお気軽にどうぞ。</p>
+        <h3>Questions</h3>
+        <p>Questions about usage or specifications? Don't hesitate to ask.</p>
         <p style="margin-top: 12px;"><a href="https://github.com/kizzz9/canopy-support/issues">GitHub Issues</a></p>
       </div>
     </div>
@@ -413,25 +403,25 @@ body {
   <!-- FAQ -->
   <div class="section">
     <span class="section-label">FAQ</span>
-    <h2>よくある質問</h2>
+    <h2>Frequently Asked Questions</h2>
     <p class="subtitle"></p>
 
     <div class="faq-list">
       <div class="faq-item">
-        <h3><span class="faq-q">Q</span>プロジェクトのコードを変更しますか？</h3>
-        <p>いいえ。Canopy は完全に読み取り専用です。ファイルの変更・削除・書き込みは一切行いません。</p>
+        <h3><span class="faq-q">Q</span>Does Canopy modify my project's code?</h3>
+        <p>No. Canopy is completely read-only. It never modifies, deletes, or writes to your files.</p>
       </div>
       <div class="faq-item">
-        <h3><span class="faq-q">Q</span>インターネット接続は必要ですか？</h3>
-        <p>不要です。すべての解析はローカルで実行され、データは外部に送信されません。</p>
+        <h3><span class="faq-q">Q</span>Does it require an internet connection?</h3>
+        <p>No. All analysis runs locally on your Mac. No data is ever sent externally.</p>
       </div>
       <div class="faq-item">
-        <h3><span class="faq-q">Q</span>対応環境は？</h3>
-        <p>macOS 15.0（Sequoia）以降が必要です。Apple Silicon / Intel Mac の両方に対応しています。</p>
+        <h3><span class="faq-q">Q</span>What are the system requirements?</h3>
+        <p>macOS 15.0 (Sequoia) or later is required. Both Apple Silicon and Intel Macs are supported.</p>
       </div>
       <div class="faq-item">
-        <h3><span class="faq-q">Q</span>どんなプロジェクトに対応していますか？</h3>
-        <p>SwiftUI を使用した Swift プロジェクトに対応しています。UIKit や Objective-C のコードは解析対象外です。</p>
+        <h3><span class="faq-q">Q</span>What types of projects are supported?</h3>
+        <p>Canopy analyzes Swift projects that use SwiftUI. UIKit and Objective-C code are not analyzed.</p>
       </div>
     </div>
   </div>
@@ -441,8 +431,8 @@ body {
 <!-- Footer -->
 <div class="footer">
   <div class="footer-links">
-    <a href="https://kizzz9.github.io/canopy-privacy-policy/">プライバシーポリシー</a>
-    <a href="https://github.com/kizzz9/canopy-support/issues">お問い合わせ</a>
+    <a href="https://kizzz9.github.io/canopy-privacy-policy/en/">Privacy Policy</a>
+    <a href="https://github.com/kizzz9/canopy-support/issues">Contact</a>
   </div>
   <p>&copy; 2026 Canopy. All rights reserved.</p>
 </div>

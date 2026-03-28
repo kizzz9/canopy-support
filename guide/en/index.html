@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Canopy — 使い方ガイド</title>
+<title>Canopy — User Guide</title>
 <style>
 :root {
   --green-50: #f0fdf4;
@@ -35,7 +35,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Hero */
 .hero {
   background: linear-gradient(135deg, var(--green-900) 0%, var(--green-700) 50%, var(--green-600) 100%);
   color: white;
@@ -91,7 +90,29 @@ body {
   letter-spacing: 0.02em;
 }
 
-/* Navigation */
+.lang-switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.lang-switch a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 0.85em;
+  padding: 6px 12px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.lang-switch a:hover {
+  color: white;
+  border-color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.1);
+}
+
 .nav {
   background: white;
   border-bottom: 1px solid var(--gray-200);
@@ -128,14 +149,12 @@ body {
   border-bottom-color: var(--green-500);
 }
 
-/* Main */
 .container {
   max-width: 900px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* Section */
 .section {
   padding: 60px 0;
   border-bottom: 1px solid var(--gray-100);
@@ -170,7 +189,6 @@ body {
   margin-bottom: 32px;
 }
 
-/* Steps */
 .steps {
   display: flex;
   flex-direction: column;
@@ -210,7 +228,6 @@ body {
   font-size: 0.95em;
 }
 
-/* Feature cards */
 .features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -256,7 +273,6 @@ body {
   line-height: 1.6;
 }
 
-/* Keyboard shortcuts */
 .shortcuts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -292,7 +308,6 @@ kbd {
   text-align: center;
 }
 
-/* Export table */
 .export-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -324,7 +339,6 @@ kbd {
   color: var(--gray-500);
 }
 
-/* Tip boxes */
 .tip {
   background: var(--green-50);
   border-left: 4px solid var(--green-500);
@@ -347,7 +361,6 @@ kbd {
   font-size: 0.9em;
 }
 
-/* CLI section */
 .cli-block {
   background: var(--gray-900);
   color: #e5e7eb;
@@ -364,7 +377,6 @@ kbd {
 .cli-block .flag { color: #93c5fd; }
 .cli-block .comment { color: var(--gray-500); }
 
-/* Footer */
 .footer {
   text-align: center;
   padding: 40px 20px;
@@ -386,7 +398,6 @@ kbd {
   margin-bottom: 12px;
 }
 
-/* Responsive */
 @media (max-width: 600px) {
   .hero { padding: 60px 20px 40px; }
   .hero h1 { font-size: 1.8em; }
@@ -398,31 +409,6 @@ kbd {
   .nav a { padding: 12px 14px; font-size: 0.85em; }
 }
 
-/* Language switcher */
-.lang-switch {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  z-index: 10;
-}
-
-.lang-switch a {
-  color: rgba(255,255,255,0.7);
-  text-decoration: none;
-  font-size: 0.85em;
-  padding: 6px 12px;
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 6px;
-  transition: all 0.2s;
-}
-
-.lang-switch a:hover {
-  color: white;
-  border-color: rgba(255,255,255,0.6);
-  background: rgba(255,255,255,0.1);
-}
-
-/* Dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --gray-50: #1a1a2e;
@@ -449,24 +435,24 @@ kbd {
 
 <!-- Hero -->
 <div class="hero">
-  <div class="lang-switch"><a href="./en/">English</a></div>
+  <div class="lang-switch"><a href="../">日本語</a></div>
   <div class="hero-content">
     <div class="hero-icon">🌳</div>
-    <h1>Canopy 使い方ガイド</h1>
-    <p>SwiftUI プロジェクトの View 階層を可視化・分析する macOS 開発ツール</p>
-    <div class="badge">macOS 15.0+ &nbsp;·&nbsp; 読み取り専用 &nbsp;·&nbsp; 完全オフライン</div>
+    <h1>Canopy User Guide</h1>
+    <p>A macOS development tool for visualizing and analyzing SwiftUI View hierarchies</p>
+    <div class="badge">macOS 15.0+ &nbsp;·&nbsp; Read-only &nbsp;·&nbsp; Fully Offline</div>
   </div>
 </div>
 
 <!-- Navigation -->
 <div class="nav">
   <div class="nav-inner">
-    <a href="#getting-started">はじめに</a>
-    <a href="#features">機能一覧</a>
-    <a href="#panels">パネル操作</a>
-    <a href="#legend">凡例</a>
-    <a href="#shortcuts">ショートカット</a>
-    <a href="#export">エクスポート</a>
+    <a href="#getting-started">Getting Started</a>
+    <a href="#features">Features</a>
+    <a href="#panels">Panels</a>
+    <a href="#legend">Legend</a>
+    <a href="#shortcuts">Shortcuts</a>
+    <a href="#export">Export</a>
     <a href="#cli">CLI</a>
     <a href="#faq">FAQ</a>
   </div>
@@ -477,92 +463,92 @@ kbd {
   <!-- Getting Started -->
   <div class="section" id="getting-started">
     <span class="section-label">Getting Started</span>
-    <h2>はじめに</h2>
-    <p class="subtitle">3ステップで SwiftUI プロジェクトを解析できます</p>
+    <h2>Getting Started</h2>
+    <p class="subtitle">Analyze your SwiftUI project in 3 simple steps</p>
 
     <div class="steps">
       <div class="step">
         <div class="step-number">1</div>
         <div class="step-content">
-          <h3>フォルダを開く</h3>
-          <p><kbd>⌘</kbd> <kbd>O</kbd> でプロジェクトフォルダを選択します。Canopy が .swift ファイルを自動検出し、AST 解析を開始します。</p>
+          <h3>Open a Folder</h3>
+          <p>Press <kbd>⌘</kbd> <kbd>O</kbd> to select your project folder. Canopy automatically detects .swift files and begins AST analysis.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-number">2</div>
         <div class="step-content">
-          <h3>View ツリーを探索</h3>
-          <p>左パネルにファイル一覧、中央に View ツリーが表示されます。ノードをクリックすると、右パネルにソースコードがハイライト表示されます。</p>
+          <h3>Explore the View Tree</h3>
+          <p>The left panel shows your file list, the center displays the View tree. Click a node to see its source code highlighted in the right panel.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-number">3</div>
         <div class="step-content">
-          <h3>品質を分析</h3>
-          <p>下部パネルで品質スコア・依存グラフ・統計情報を確認できます。各 View のグレードバッジをクリックすると、複雑度の内訳が表示されます。</p>
+          <h3>Analyze Quality</h3>
+          <p>The bottom panel shows quality scores, dependency graphs, and statistics. Click a grade badge to see the complexity breakdown.</p>
         </div>
       </div>
     </div>
 
     <div class="tip">
       <div class="tip-title">Tip</div>
-      <p>Canopy は読み取り専用です。プロジェクトのコードを変更・削除することは一切ありません。安心して使えます。</p>
+      <p>Canopy is read-only. It never modifies or deletes any of your project's code. Use it with confidence.</p>
     </div>
   </div>
 
   <!-- Features -->
   <div class="section" id="features">
     <span class="section-label">Features</span>
-    <h2>主な機能</h2>
-    <p class="subtitle">Canopy が提供するインスペクション機能</p>
+    <h2>Key Features</h2>
+    <p class="subtitle">Inspection capabilities provided by Canopy</p>
 
     <div class="features">
       <div class="feature-card">
         <div class="feature-icon">🌲</div>
-        <h3>View ツリー表示</h3>
-        <p>SwiftUI の View 階層をツリー構造で可視化。ネストされた View、@ViewBuilder、extension 内の View 関数も検出します。</p>
+        <h3>View Tree Display</h3>
+        <p>Visualize SwiftUI View hierarchies as a tree structure. Detects nested Views, @ViewBuilder, and View functions in extensions.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">📊</div>
-        <h3>品質分析</h3>
-        <p>各 View に A〜F のグレードを付与。複雑度・ネスト深度・State 数・Body Weight・Modifier 順序を評価します。</p>
+        <h3>Quality Analysis</h3>
+        <p>Assigns A through F grades to each View. Evaluates complexity, nesting depth, State count, body weight, and modifier order.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">🔗</div>
-        <h3>依存グラフ</h3>
-        <p>View 間の依存関係を可視化。循環参照の検出、孤立 View の発見、State→Binding フローの追跡ができます。</p>
+        <h3>Dependency Graph</h3>
+        <p>Visualize dependencies between Views. Detect circular references, find isolated Views, and trace State-to-Binding flow.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">🔍</div>
-        <h3>State 監査</h3>
-        <p>@State / @Binding / @Environment / @Observable のプロパティを検出し、private 修飾子の欠落や過剰な State を警告します。</p>
+        <h3>State Audit</h3>
+        <p>Detects @State, @Binding, @Environment, and @Observable properties. Warns about missing private modifiers and excessive State usage.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">🎨</div>
-        <h3>シンタックスハイライト</h3>
-        <p>Swift コードを色分け表示。View ノードに対応する行をハイライトし、コードクリックでツリーを逆引きします。</p>
+        <h3>Syntax Highlighting</h3>
+        <p>Color-coded Swift code display. Highlights lines corresponding to View nodes. Click code to reverse-lookup in the tree.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">🔨</div>
-        <h3>Xcode 連携</h3>
-        <p>ハンマーアイコンをクリックすると、対応する行で Xcode を直接開きます（xed --line）。</p>
+        <h3>Xcode Integration</h3>
+        <p>Click the hammer icon to open the corresponding line directly in Xcode (via xed --line).</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">📐</div>
-        <h3>アーキテクチャルール</h3>
-        <p>.canopy-rules.json でカスタムルールを定義。命名規則・State 上限・ネスト深度制限などをチームで共有できます。</p>
+        <h3>Architecture Rules</h3>
+        <p>Define custom rules with .canopy-rules.json. Share naming conventions, State limits, and nesting depth restrictions across your team.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">🧩</div>
-        <h3>プラグイン</h3>
-        <p>カスタムルール・エクスポーター・アナライザーをプラグインとして追加可能。カタログから選んでインストールできます。</p>
+        <h3>Plugins</h3>
+        <p>Add custom rules, exporters, and analyzers as plugins. Browse and install from the plugin catalog.</p>
       </div>
     </div>
   </div>
@@ -570,32 +556,32 @@ kbd {
   <!-- Panels -->
   <div class="section" id="panels">
     <span class="section-label">Interface</span>
-    <h2>パネル操作</h2>
-    <p class="subtitle">3ペイン + ボトムパネルの構成</p>
+    <h2>Panel Layout</h2>
+    <p class="subtitle">3 panes + bottom panel layout</p>
 
     <div class="features" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
       <div class="feature-card">
         <div class="feature-icon">📁</div>
-        <h3>左: ファイルリスト</h3>
-        <p>解析対象の Swift ファイル一覧。各ファイルにグレードバッジが付きます。クリックで選択。</p>
+        <h3>Left: File List</h3>
+        <p>List of analyzed Swift files. Each file shows a grade badge. Click to select.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">🌿</div>
-        <h3>中央: View ツリー</h3>
-        <p>View の階層構造。パンくずリスト、Peek Body（body プレビュー）、Code Vision メトリクスを表示。</p>
+        <h3>Center: View Tree</h3>
+        <p>View hierarchy structure. Shows breadcrumbs, Peek Body (body preview), and Code Vision metrics.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">📝</div>
-        <h3>右: ソースコード</h3>
-        <p>行番号付きコード表示。行ドラッグで範囲選択 → ⌘C でコピー。コードクリックでツリー逆引き。</p>
+        <h3>Right: Source Code</h3>
+        <p>Line-numbered code display. Drag line numbers to select ranges, then copy with ⌘C. Click code to reverse-lookup in the tree.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">📈</div>
-        <h3>下: 分析パネル</h3>
-        <p>品質・依存・統計の3タブ切替。リサイズ・折りたたみ可能。グレードバッジクリックで内訳ポップオーバー。</p>
+        <h3>Bottom: Analysis Panel</h3>
+        <p>Three tabs: Quality, Dependencies, Statistics. Resizable and collapsible. Click grade badges for detail popovers.</p>
       </div>
     </div>
   </div>
@@ -603,70 +589,70 @@ kbd {
   <!-- Legend -->
   <div class="section" id="legend">
     <span class="section-label">Legend</span>
-    <h2>アイコン・バッジ凡例</h2>
-    <p class="subtitle">ツリーとファイル一覧に表示される各要素の意味</p>
+    <h2>Icons &amp; Badges</h2>
+    <p class="subtitle">Meaning of each element shown in the tree and file list</p>
 
-    <h3 style="font-size: 1.1em; margin-bottom: 16px; color: var(--gray-800);">ノードアイコンの色</h3>
+    <h3 style="font-size: 1.1em; margin-bottom: 16px; color: var(--gray-800);">Node Icon Colors</h3>
     <div class="shortcuts">
       <div class="shortcut">
-        <span class="shortcut-label">レイアウト — VStack / HStack / ZStack</span>
-        <span style="color: #3b82f6; font-weight: 700;">● 青</span>
+        <span class="shortcut-label">Layout — VStack / HStack / ZStack</span>
+        <span style="color: #3b82f6; font-weight: 700;">● Blue</span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label">インタラクション — Button / Toggle / Picker</span>
-        <span style="color: #22c55e; font-weight: 700;">● 緑</span>
+        <span class="shortcut-label">Interaction — Button / Toggle / Picker</span>
+        <span style="color: #22c55e; font-weight: 700;">● Green</span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label">メディア — Image</span>
-        <span style="color: #a855f7; font-weight: 700;">● 紫</span>
+        <span class="shortcut-label">Media — Image</span>
+        <span style="color: #a855f7; font-weight: 700;">● Purple</span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label">ナビゲーション — NavigationStack / TabView</span>
-        <span style="color: #f97316; font-weight: 700;">● オレンジ</span>
+        <span class="shortcut-label">Navigation — NavigationStack / TabView</span>
+        <span style="color: #f97316; font-weight: 700;">● Orange</span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label">リスト系 — List / ForEach / ScrollView</span>
-        <span style="color: #06b6d4; font-weight: 700;">● シアン</span>
+        <span class="shortcut-label">Lists — List / ForEach / ScrollView</span>
+        <span style="color: #06b6d4; font-weight: 700;">● Cyan</span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label">条件分岐 — if / switch</span>
-        <span style="color: #eab308; font-weight: 700;">● 黄</span>
+        <span class="shortcut-label">Conditional — if / switch</span>
+        <span style="color: #eab308; font-weight: 700;">● Yellow</span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label">区切り — Divider / Spacer</span>
-        <span style="color: #6b7280; font-weight: 700;">● グレー</span>
+        <span class="shortcut-label">Separators — Divider / Spacer</span>
+        <span style="color: #6b7280; font-weight: 700;">● Gray</span>
       </div>
     </div>
 
-    <h3 style="font-size: 1.1em; margin: 32px 0 16px; color: var(--gray-800);">バッジ・マーカー</h3>
+    <h3 style="font-size: 1.1em; margin: 32px 0 16px; color: var(--gray-800);">Badges &amp; Markers</h3>
     <div class="shortcuts">
       <div class="shortcut">
-        <span class="shortcut-label"><strong>[H] [V] [Z] [S] [L] [F] [G]</strong> — レイアウトバッジ</span>
+        <span class="shortcut-label"><strong>[H] [V] [Z] [S] [L] [F] [G]</strong> — Layout badges</span>
         <span style="font-size: 0.8em; color: var(--gray-500);">HStack / VStack / ZStack / ScrollView / List / Form / Grid</span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label"><strong style="background: rgba(59,130,246,0.6); color: white; padding: 1px 6px; border-radius: 3px; font-size: 0.85em;">3</strong> — Modifier 数バッジ</span>
-        <span style="font-size: 0.8em; color: var(--gray-500);">そのノードの .modifier の数</span>
+        <span class="shortcut-label"><strong style="background: rgba(59,130,246,0.6); color: white; padding: 1px 6px; border-radius: 3px; font-size: 0.85em;">3</strong> — Modifier count badge</span>
+        <span style="font-size: 0.8em; color: var(--gray-500);">Number of .modifiers on the node</span>
       </div>
       <div class="shortcut">
         <span class="shortcut-label">👁 — Peek Body</span>
-        <span style="font-size: 0.8em; color: var(--gray-500);">右クリックで body を展開プレビュー</span>
+        <span style="font-size: 0.8em; color: var(--gray-500);">Right-click to expand body preview</span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label"><strong>L42</strong> — 行番号</span>
-        <span style="font-size: 0.8em; color: var(--gray-500);">ソースコード上の行位置</span>
+        <span class="shortcut-label"><strong>L42</strong> — Line number</span>
+        <span style="font-size: 0.8em; color: var(--gray-500);">Position in source code</span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label"><strong style="background: #22c55e; color: white; padding: 1px 6px; border-radius: 2px; font-size: 0.8em;">NOW</strong> — 1時間以内に更新</span>
-        <span style="font-size: 0.8em; color: var(--gray-500);">ファイル一覧に表示</span>
+        <span class="shortcut-label"><strong style="background: #22c55e; color: white; padding: 1px 6px; border-radius: 2px; font-size: 0.8em;">NOW</strong> — Updated within 1 hour</span>
+        <span style="font-size: 0.8em; color: var(--gray-500);">Shown in file list</span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label"><strong style="background: #3b82f6; color: white; padding: 1px 6px; border-radius: 2px; font-size: 0.8em;">TODAY</strong> — 24時間以内に更新</span>
-        <span style="font-size: 0.8em; color: var(--gray-500);">ファイル一覧に表示</span>
+        <span class="shortcut-label"><strong style="background: #3b82f6; color: white; padding: 1px 6px; border-radius: 2px; font-size: 0.8em;">TODAY</strong> — Updated within 24 hours</span>
+        <span style="font-size: 0.8em; color: var(--gray-500);">Shown in file list</span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label"><strong style="padding: 1px 6px; border-radius: 2px; font-size: 0.8em;">A</strong>〜<strong style="padding: 1px 6px; border-radius: 2px; font-size: 0.8em;">F</strong> — グレードバッジ</span>
-        <span style="font-size: 0.8em; color: var(--gray-500);">クリックで複雑度の内訳を表示</span>
+        <span class="shortcut-label"><strong style="padding: 1px 6px; border-radius: 2px; font-size: 0.8em;">A</strong> to <strong style="padding: 1px 6px; border-radius: 2px; font-size: 0.8em;">F</strong> — Grade badge</span>
+        <span style="font-size: 0.8em; color: var(--gray-500);">Click to view complexity breakdown</span>
       </div>
     </div>
   </div>
@@ -674,16 +660,16 @@ kbd {
   <!-- Shortcuts -->
   <div class="section" id="shortcuts">
     <span class="section-label">Shortcuts</span>
-    <h2>キーボードショートカット</h2>
-    <p class="subtitle">よく使う操作をすばやく実行</p>
+    <h2>Keyboard Shortcuts</h2>
+    <p class="subtitle">Quick access to common operations</p>
 
     <div class="shortcuts">
       <div class="shortcut">
-        <span class="shortcut-label">フォルダを開く</span>
+        <span class="shortcut-label">Open Folder</span>
         <span><kbd>⌘</kbd> <kbd>O</kbd></span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label">リロード</span>
+        <span class="shortcut-label">Reload</span>
         <span><kbd>⌘</kbd> <kbd>R</kbd></span>
       </div>
       <div class="shortcut">
@@ -691,47 +677,47 @@ kbd {
         <span><kbd>⌘</kbd> <kbd>P</kbd></span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label">ファイル内検索</span>
+        <span class="shortcut-label">Find in File</span>
         <span><kbd>⌘</kbd> <kbd>F</kbd></span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label">全体検索</span>
+        <span class="shortcut-label">Search All Files</span>
         <span><kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>F</kbd></span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label">行にジャンプ</span>
+        <span class="shortcut-label">Go to Line</span>
         <span><kbd>⌘</kbd> <kbd>L</kbd></span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label">品質パネル</span>
+        <span class="shortcut-label">Quality Panel</span>
         <span><kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>I</kbd></span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label">依存パネル</span>
+        <span class="shortcut-label">Dependencies Panel</span>
         <span><kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>G</kbd></span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label">ツリー全展開</span>
+        <span class="shortcut-label">Expand All</span>
         <span><kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>E</kbd></span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label">ツリー全折りたたみ</span>
+        <span class="shortcut-label">Collapse All</span>
         <span><kbd>⇧</kbd> <kbd>⌘</kbd> <kbd>W</kbd></span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label">フォント拡大</span>
+        <span class="shortcut-label">Increase Font Size</span>
         <span><kbd>⌘</kbd> <kbd>+</kbd></span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label">フォント縮小</span>
+        <span class="shortcut-label">Decrease Font Size</span>
         <span><kbd>⌘</kbd> <kbd>−</kbd></span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label">ヘルプ</span>
+        <span class="shortcut-label">Help</span>
         <span><kbd>⌘</kbd> <kbd>/</kbd></span>
       </div>
       <div class="shortcut">
-        <span class="shortcut-label">フォントリセット</span>
+        <span class="shortcut-label">Reset Font Size</span>
         <span><kbd>⌘</kbd> <kbd>0</kbd></span>
       </div>
     </div>
@@ -740,142 +726,142 @@ kbd {
   <!-- Export -->
   <div class="section" id="export">
     <span class="section-label">Export</span>
-    <h2>エクスポート</h2>
-    <p class="subtitle">分析結果を様々な形式で出力</p>
+    <h2>Export</h2>
+    <p class="subtitle">Output analysis results in various formats</p>
 
     <div class="export-grid">
       <div class="export-item">
         <span>🌐</span>
         <div>
-          <div class="export-name">HTML レポート</div>
-          <div class="export-desc">静的 HTML で共有</div>
+          <div class="export-name">HTML Report</div>
+          <div class="export-desc">Share as static HTML</div>
         </div>
       </div>
       <div class="export-item">
         <span>⚡</span>
         <div>
-          <div class="export-name">インタラクティブ HTML</div>
-          <div class="export-desc">操作可能なツリー付き</div>
+          <div class="export-name">Interactive HTML</div>
+          <div class="export-desc">With interactive tree</div>
         </div>
       </div>
       <div class="export-item">
         <span>📄</span>
         <div>
           <div class="export-name">Markdown</div>
-          <div class="export-desc">ドキュメント向け</div>
+          <div class="export-desc">For documentation</div>
         </div>
       </div>
       <div class="export-item">
         <span>📋</span>
         <div>
           <div class="export-name">JSON</div>
-          <div class="export-desc">プログラム連携用</div>
+          <div class="export-desc">For programmatic use</div>
         </div>
       </div>
       <div class="export-item">
         <span>🧜</span>
         <div>
           <div class="export-name">Mermaid</div>
-          <div class="export-desc">依存関係図</div>
+          <div class="export-desc">Dependency diagrams</div>
         </div>
       </div>
       <div class="export-item">
         <span>🌱</span>
         <div>
           <div class="export-name">PlantUML</div>
-          <div class="export-desc">クラス図</div>
+          <div class="export-desc">Class diagrams</div>
         </div>
       </div>
       <div class="export-item">
         <span>🔵</span>
         <div>
           <div class="export-name">DOT (Graphviz)</div>
-          <div class="export-desc">グラフ描画</div>
+          <div class="export-desc">Graph rendering</div>
         </div>
       </div>
       <div class="export-item">
         <span>📊</span>
         <div>
           <div class="export-name">CSV</div>
-          <div class="export-desc">警告レポート</div>
+          <div class="export-desc">Warning reports</div>
         </div>
       </div>
     </div>
 
     <div class="tip">
       <div class="tip-title">Tip</div>
-      <p>メニューバーの「プロジェクト → エクスポート」からすべての形式にアクセスできます。</p>
+      <p>Access all export formats from the menu bar under "Project &rarr; Export".</p>
     </div>
   </div>
 
   <!-- CLI -->
   <div class="section" id="cli">
     <span class="section-label">CLI</span>
-    <h2>コマンドライン</h2>
-    <p class="subtitle">CI/CD パイプラインに組み込めるヘッドレス実行</p>
+    <h2>Command Line</h2>
+    <p class="subtitle">Headless execution for CI/CD pipeline integration</p>
 
     <div class="cli-block">
-      <span class="comment"># JSON 形式で解析結果を出力</span><br>
+      <span class="comment"># Output analysis results in JSON format</span><br>
       <span class="prompt">$</span> Canopy <span class="flag">--analyze</span> /path/to/project <span class="flag">--format</span> json<br><br>
-      <span class="comment"># SARIF 形式（GitHub Code Scanning 連携）</span><br>
+      <span class="comment"># SARIF format (for GitHub Code Scanning)</span><br>
       <span class="prompt">$</span> Canopy <span class="flag">--analyze</span> /path/to/project <span class="flag">--format</span> sarif<br><br>
-      <span class="comment"># JSON Schema を表示</span><br>
+      <span class="comment"># Display JSON Schema</span><br>
       <span class="prompt">$</span> Canopy <span class="flag">--format</span> json-schema
     </div>
 
     <div class="tip">
-      <div class="tip-title">CI 連携</div>
-      <p>SARIF 出力を GitHub Actions にアップロードすると、PR 上で品質警告がインライン表示されます。</p>
+      <div class="tip-title">CI Integration</div>
+      <p>Upload SARIF output to GitHub Actions to display quality warnings inline on pull requests.</p>
     </div>
   </div>
 
   <!-- FAQ -->
   <div class="section" id="faq">
     <span class="section-label">FAQ</span>
-    <h2>よくある質問</h2>
+    <h2>Frequently Asked Questions</h2>
     <p class="subtitle"></p>
 
     <div class="steps">
       <div class="step">
         <div class="step-number" style="background: var(--gray-300); box-shadow: none; color: var(--gray-700);">Q</div>
         <div class="step-content">
-          <h3>プロジェクトのコードを変更しますか？</h3>
-          <p>いいえ。Canopy は完全に読み取り専用です。ファイルの変更・削除・書き込みは一切行いません。</p>
+          <h3>Does Canopy modify my project's code?</h3>
+          <p>No. Canopy is completely read-only. It never modifies, deletes, or writes to your files.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-number" style="background: var(--gray-300); box-shadow: none; color: var(--gray-700);">Q</div>
         <div class="step-content">
-          <h3>インターネット接続は必要ですか？</h3>
-          <p>不要です。すべての解析はローカルで実行され、データは外部に送信されません。</p>
+          <h3>Does it require an internet connection?</h3>
+          <p>No. All analysis runs locally on your Mac. No data is ever sent externally.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-number" style="background: var(--gray-300); box-shadow: none; color: var(--gray-700);">Q</div>
         <div class="step-content">
-          <h3>対応環境は？</h3>
-          <p>macOS 15.0（Sequoia）以降が必要です。Apple Silicon / Intel Mac の両方に対応しています。</p>
+          <h3>What are the system requirements?</h3>
+          <p>macOS 15.0 (Sequoia) or later is required. Both Apple Silicon and Intel Macs are supported.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-number" style="background: var(--gray-300); box-shadow: none; color: var(--gray-700);">Q</div>
         <div class="step-content">
-          <h3>どんなプロジェクトに対応していますか？</h3>
-          <p>SwiftUI を使用した Swift プロジェクトに対応しています。UIKit や Objective-C のコードは解析対象外です。</p>
+          <h3>What types of projects are supported?</h3>
+          <p>Canopy analyzes Swift projects that use SwiftUI. UIKit and Objective-C code are not analyzed.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-number" style="background: var(--gray-300); box-shadow: none; color: var(--gray-700);">Q</div>
         <div class="step-content">
-          <h3>カスタムルールを設定できますか？</h3>
-          <p>はい。プロジェクトルートに <code>.canopy-rules.json</code> または <code>.canopy-rules.yml</code> を配置すると、命名規則・State 上限・ネスト深度制限などをチームで共有できます。</p>
+          <h3>Can I set custom rules?</h3>
+          <p>Yes. Place a <code>.canopy-rules.json</code> or <code>.canopy-rules.yml</code> file at your project root to define naming conventions, State limits, nesting depth restrictions, and more. Share them across your team.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-number" style="background: var(--gray-300); box-shadow: none; color: var(--gray-700);">Q</div>
         <div class="step-content">
-          <h3>グレード評価の基準は？</h3>
-          <p>複雑度・ネスト深度・State 数・Body Weight・Modifier 数の5要素を総合評価します。A（優秀）〜F（要改善）の6段階で、C 以上が推奨ラインです。</p>
+          <h3>How are grades calculated?</h3>
+          <p>Grades are based on 5 factors: complexity, nesting depth, State count, body weight, and modifier count. The scale runs from A (excellent) to F (needs improvement), with C or above being the recommended baseline.</p>
         </div>
       </div>
     </div>
@@ -886,9 +872,9 @@ kbd {
 <!-- Footer -->
 <div class="footer">
   <div class="footer-links">
-    <a href="https://kizzz9.github.io/canopy-support/">サポート</a>
-    <a href="https://kizzz9.github.io/canopy-privacy-policy/">プライバシーポリシー</a>
-    <a href="https://github.com/kizzz9/canopy-support/issues">お問い合わせ</a>
+    <a href="https://kizzz9.github.io/canopy-support/en/">Support</a>
+    <a href="https://kizzz9.github.io/canopy-privacy-policy/en/">Privacy Policy</a>
+    <a href="https://github.com/kizzz9/canopy-support/issues">Contact</a>
   </div>
   <p>&copy; 2026 Canopy. All rights reserved.</p>
 </div>
