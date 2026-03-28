@@ -454,7 +454,6 @@ kbd {
     <a href="#shortcuts">Shortcuts</a>
     <a href="#export">Export</a>
     <a href="#cli">CLI</a>
-    <a href="#faq">FAQ</a>
   </div>
 </div>
 
@@ -812,58 +811,6 @@ kbd {
     <div class="tip">
       <div class="tip-title">CI Integration</div>
       <p>Upload SARIF output to GitHub Actions to display quality warnings inline on pull requests.</p>
-    </div>
-  </div>
-
-  <!-- FAQ -->
-  <div class="section" id="faq">
-    <span class="section-label">FAQ</span>
-    <h2>Frequently Asked Questions</h2>
-    <p class="subtitle"></p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-number" style="background: var(--gray-300); box-shadow: none; color: var(--gray-700);">Q</div>
-        <div class="step-content">
-          <h3>Does Canopy modify my project's code?</h3>
-          <p>No. Canopy is completely read-only. It never modifies, deletes, or writes to your files.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-number" style="background: var(--gray-300); box-shadow: none; color: var(--gray-700);">Q</div>
-        <div class="step-content">
-          <h3>Does it require an internet connection?</h3>
-          <p>No. All analysis runs locally on your Mac. No data is ever sent externally.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-number" style="background: var(--gray-300); box-shadow: none; color: var(--gray-700);">Q</div>
-        <div class="step-content">
-          <h3>What are the system requirements?</h3>
-          <p>macOS 15.0 (Sequoia) or later is required. Both Apple Silicon and Intel Macs are supported.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-number" style="background: var(--gray-300); box-shadow: none; color: var(--gray-700);">Q</div>
-        <div class="step-content">
-          <h3>What types of projects are supported?</h3>
-          <p>Canopy analyzes Swift projects that use SwiftUI. UIKit and Objective-C code are not analyzed.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-number" style="background: var(--gray-300); box-shadow: none; color: var(--gray-700);">Q</div>
-        <div class="step-content">
-          <h3>Can I set custom rules?</h3>
-          <p>Yes. Place a <code>.canopy-rules.json</code> or <code>.canopy-rules.yml</code> file at your project root to define naming conventions, State limits, nesting depth restrictions, and more. Share them across your team.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-number" style="background: var(--gray-300); box-shadow: none; color: var(--gray-700);">Q</div>
-        <div class="step-content">
-          <h3>How are grades calculated?</h3>
-          <p>Grades are based on 5 factors: complexity, nesting depth, State count, body weight, and modifier count. The scale runs from A (excellent) to F (needs improvement), with C or above being the recommended baseline.</p>
-        </div>
-      </div>
     </div>
   </div>
 

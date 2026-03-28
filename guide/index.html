@@ -468,7 +468,6 @@ kbd {
     <a href="#shortcuts">ショートカット</a>
     <a href="#export">エクスポート</a>
     <a href="#cli">CLI</a>
-    <a href="#faq">FAQ</a>
   </div>
 </div>
 
@@ -826,58 +825,6 @@ kbd {
     <div class="tip">
       <div class="tip-title">CI 連携</div>
       <p>SARIF 出力を GitHub Actions にアップロードすると、PR 上で品質警告がインライン表示されます。</p>
-    </div>
-  </div>
-
-  <!-- FAQ -->
-  <div class="section" id="faq">
-    <span class="section-label">FAQ</span>
-    <h2>よくある質問</h2>
-    <p class="subtitle"></p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-number" style="background: var(--gray-300); box-shadow: none; color: var(--gray-700);">Q</div>
-        <div class="step-content">
-          <h3>プロジェクトのコードを変更しますか？</h3>
-          <p>いいえ。Canopy は完全に読み取り専用です。ファイルの変更・削除・書き込みは一切行いません。</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-number" style="background: var(--gray-300); box-shadow: none; color: var(--gray-700);">Q</div>
-        <div class="step-content">
-          <h3>インターネット接続は必要ですか？</h3>
-          <p>不要です。すべての解析はローカルで実行され、データは外部に送信されません。</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-number" style="background: var(--gray-300); box-shadow: none; color: var(--gray-700);">Q</div>
-        <div class="step-content">
-          <h3>対応環境は？</h3>
-          <p>macOS 15.0（Sequoia）以降が必要です。Apple Silicon / Intel Mac の両方に対応しています。</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-number" style="background: var(--gray-300); box-shadow: none; color: var(--gray-700);">Q</div>
-        <div class="step-content">
-          <h3>どんなプロジェクトに対応していますか？</h3>
-          <p>SwiftUI を使用した Swift プロジェクトに対応しています。UIKit や Objective-C のコードは解析対象外です。</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-number" style="background: var(--gray-300); box-shadow: none; color: var(--gray-700);">Q</div>
-        <div class="step-content">
-          <h3>カスタムルールを設定できますか？</h3>
-          <p>はい。プロジェクトルートに <code>.canopy-rules.json</code> または <code>.canopy-rules.yml</code> を配置すると、命名規則・State 上限・ネスト深度制限などをチームで共有できます。</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-number" style="background: var(--gray-300); box-shadow: none; color: var(--gray-700);">Q</div>
-        <div class="step-content">
-          <h3>グレード評価の基準は？</h3>
-          <p>複雑度・ネスト深度・State 数・Body Weight・Modifier 数の5要素を総合評価します。A（優秀）〜F（要改善）の6段階で、C 以上が推奨ラインです。</p>
-        </div>
-      </div>
     </div>
   </div>
 
