@@ -439,6 +439,7 @@ kbd {
     <a href="#getting-started">はじめに</a>
     <a href="#features">機能一覧</a>
     <a href="#panels">パネル操作</a>
+    <a href="#legend">凡例</a>
     <a href="#shortcuts">ショートカット</a>
     <a href="#export">エクスポート</a>
     <a href="#cli">CLI</a>
@@ -570,6 +571,77 @@ kbd {
         <div class="feature-icon">📈</div>
         <h3>下: 分析パネル</h3>
         <p>品質・依存・統計の3タブ切替。リサイズ・折りたたみ可能。グレードバッジクリックで内訳ポップオーバー。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="section" id="legend">
+    <span class="section-label">Legend</span>
+    <h2>アイコン・バッジ凡例</h2>
+    <p class="subtitle">ツリーとファイル一覧に表示される各要素の意味</p>
+
+    <h3 style="font-size: 1.1em; margin-bottom: 16px; color: var(--gray-800);">ノードアイコンの色</h3>
+    <div class="shortcuts">
+      <div class="shortcut">
+        <span class="shortcut-label">レイアウト — VStack / HStack / ZStack</span>
+        <span style="color: #3b82f6; font-weight: 700;">● 青</span>
+      </div>
+      <div class="shortcut">
+        <span class="shortcut-label">インタラクション — Button / Toggle / Picker</span>
+        <span style="color: #22c55e; font-weight: 700;">● 緑</span>
+      </div>
+      <div class="shortcut">
+        <span class="shortcut-label">メディア — Image</span>
+        <span style="color: #a855f7; font-weight: 700;">● 紫</span>
+      </div>
+      <div class="shortcut">
+        <span class="shortcut-label">ナビゲーション — NavigationStack / TabView</span>
+        <span style="color: #f97316; font-weight: 700;">● オレンジ</span>
+      </div>
+      <div class="shortcut">
+        <span class="shortcut-label">リスト系 — List / ForEach / ScrollView</span>
+        <span style="color: #06b6d4; font-weight: 700;">● シアン</span>
+      </div>
+      <div class="shortcut">
+        <span class="shortcut-label">条件分岐 — if / switch</span>
+        <span style="color: #eab308; font-weight: 700;">● 黄</span>
+      </div>
+      <div class="shortcut">
+        <span class="shortcut-label">区切り — Divider / Spacer</span>
+        <span style="color: #6b7280; font-weight: 700;">● グレー</span>
+      </div>
+    </div>
+
+    <h3 style="font-size: 1.1em; margin: 32px 0 16px; color: var(--gray-800);">バッジ・マーカー</h3>
+    <div class="shortcuts">
+      <div class="shortcut">
+        <span class="shortcut-label"><strong>[H] [V] [Z] [S] [L] [F] [G]</strong> — レイアウトバッジ</span>
+        <span style="font-size: 0.8em; color: var(--gray-500);">HStack / VStack / ZStack / ScrollView / List / Form / Grid</span>
+      </div>
+      <div class="shortcut">
+        <span class="shortcut-label"><strong style="background: rgba(59,130,246,0.6); color: white; padding: 1px 6px; border-radius: 3px; font-size: 0.85em;">3</strong> — Modifier 数バッジ</span>
+        <span style="font-size: 0.8em; color: var(--gray-500);">そのノードの .modifier の数</span>
+      </div>
+      <div class="shortcut">
+        <span class="shortcut-label">👁 — Peek Body</span>
+        <span style="font-size: 0.8em; color: var(--gray-500);">右クリックで body を展開プレビュー</span>
+      </div>
+      <div class="shortcut">
+        <span class="shortcut-label"><strong>L42</strong> — 行番号</span>
+        <span style="font-size: 0.8em; color: var(--gray-500);">ソースコード上の行位置</span>
+      </div>
+      <div class="shortcut">
+        <span class="shortcut-label"><strong style="background: #22c55e; color: white; padding: 1px 6px; border-radius: 2px; font-size: 0.8em;">NOW</strong> — 1時間以内に更新</span>
+        <span style="font-size: 0.8em; color: var(--gray-500);">ファイル一覧に表示</span>
+      </div>
+      <div class="shortcut">
+        <span class="shortcut-label"><strong style="background: #3b82f6; color: white; padding: 1px 6px; border-radius: 2px; font-size: 0.8em;">TODAY</strong> — 24時間以内に更新</span>
+        <span style="font-size: 0.8em; color: var(--gray-500);">ファイル一覧に表示</span>
+      </div>
+      <div class="shortcut">
+        <span class="shortcut-label"><strong style="padding: 1px 6px; border-radius: 2px; font-size: 0.8em;">A</strong>〜<strong style="padding: 1px 6px; border-radius: 2px; font-size: 0.8em;">F</strong> — グレードバッジ</span>
+        <span style="font-size: 0.8em; color: var(--gray-500);">クリックで複雑度の内訳を表示</span>
       </div>
     </div>
   </div>
