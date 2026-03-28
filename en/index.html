@@ -59,9 +59,14 @@ body {
 .hero-content { position: relative; z-index: 1; }
 
 .hero-icon {
-  font-size: 64px;
   margin-bottom: 16px;
   filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+}
+
+.hero-icon img {
+  width: 96px;
+  height: 96px;
+  border-radius: 22px;
 }
 
 .hero h1 {
@@ -348,7 +353,7 @@ body {
 <div class="hero">
   <div class="lang-switch"><a href="../">日本語</a></div>
   <div class="hero-content">
-    <div class="hero-icon">🌳</div>
+    <div class="hero-icon"><img src="../icon.png" alt="Canopy"></div>
     <h1>Canopy Support</h1>
     <p>Need help? Find answers and get in touch with us here.</p>
   </div>
