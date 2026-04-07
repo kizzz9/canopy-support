@@ -366,6 +366,28 @@ kbd {
   font-size: 0.9em;
 }
 
+.note {
+  background: #fef3c7;
+  border-left: 4px solid #f59e0b;
+  border-radius: 0 12px 12px 0;
+  padding: 16px 20px;
+  margin-top: 24px;
+}
+
+.note-title {
+  font-weight: 700;
+  font-size: 0.85em;
+  color: #92400e;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.note p {
+  color: #78350f;
+  font-size: 0.9em;
+}
+
 .cli-block {
   background: var(--gray-900);
   color: #e5e7eb;
@@ -811,6 +833,11 @@ kbd {
       <span class="prompt">$</span> Canopy <span class="flag">--analyze</span> /path/to/project <span class="flag">--format</span> sarif<br><br>
       <span class="comment"># Display JSON Schema</span><br>
       <span class="prompt">$</span> Canopy <span class="flag">--format</span> json-schema
+    </div>
+
+    <div class="note">
+      <div class="note-title">First-time Setup</div>
+      <p>Before using the CLI, open the project folder in Canopy (GUI) once. Access permissions are saved, and you can analyze from the CLI from then on.</p>
     </div>
 
     <div class="tip">

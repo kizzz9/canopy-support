@@ -352,6 +352,28 @@ kbd {
   font-size: 0.9em;
 }
 
+.note {
+  background: #fef3c7;
+  border-left: 4px solid #f59e0b;
+  border-radius: 0 12px 12px 0;
+  padding: 16px 20px;
+  margin-top: 24px;
+}
+
+.note-title {
+  font-weight: 700;
+  font-size: 0.85em;
+  color: #92400e;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.note p {
+  color: #78350f;
+  font-size: 0.9em;
+}
+
 /* CLI section */
 .cli-block {
   background: var(--gray-900);
@@ -825,6 +847,11 @@ kbd {
       <span class="prompt">$</span> Canopy <span class="flag">--analyze</span> /path/to/project <span class="flag">--format</span> sarif<br><br>
       <span class="comment"># JSON Schema を表示</span><br>
       <span class="prompt">$</span> Canopy <span class="flag">--format</span> json-schema
+    </div>
+
+    <div class="note">
+      <div class="note-title">初回セットアップ</div>
+      <p>CLI で解析するプロジェクトは、先に Canopy（GUI）で一度開いてください。アクセス権が保存され、以降は CLI から解析できるようになります。</p>
     </div>
 
     <div class="tip">
