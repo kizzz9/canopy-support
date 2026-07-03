@@ -1,0 +1,103 @@
+{
+  "title": "Canopy — 使い方ガイド",
+  "h1": "Canopy 使い方ガイド",
+  "lede": "SwiftUI プロジェクトの View 階層を可視化・分析する macOS 開発ツール",
+  "pill_readonly": "読み取り専用",
+  "pill_offline": "完全オフライン",
+  "toc": [
+    ["start", "はじめに"], ["features", "機能一覧"], ["panels", "パネル操作"], ["legend", "凡例"],
+    ["shortcuts", "ショートカット"], ["export", "エクスポート"], ["cli", "CLI"]
+  ],
+  "start_h2": "はじめに",
+  "start_sub": "3ステップで SwiftUI プロジェクトを解析できます",
+  "steps": [
+    { "h": "フォルダを開く", "p": "<kbd>⌘ O</kbd> でプロジェクトフォルダを選択します。Canopy が .swift ファイルを自動検出し、AST 解析を開始します。" },
+    { "h": "View ツリーを探索", "p": "左パネルにファイル一覧、中央に View ツリーが表示されます。ノードをクリックすると、右パネルにソースコードがハイライト表示されます。" },
+    { "h": "品質を分析", "p": "下部パネルで品質スコア・依存グラフ・統計情報を確認できます。各 View のグレードバッジをクリックすると、複雑度の内訳が表示されます。" }
+  ],
+  "start_tip": "Canopy は読み取り専用です。プロジェクトのコードを変更・削除することは一切ありません。安心して使えます。",
+  "features_h2": "主な機能",
+  "features_sub": "Canopy が提供するインスペクション機能",
+  "features": [
+    { "emoji": "🌲", "h": "View ツリー表示", "p": "SwiftUI の View 階層をツリー構造で可視化。ネストされた View、@ViewBuilder、extension 内の View 関数も検出します。" },
+    { "emoji": "📊", "h": "品質分析", "p": "各 View に A〜F のグレードを付与。複雑度・ネスト深度・State 数・Body Weight・Modifier 順序を評価します。" },
+    { "emoji": "🔗", "h": "依存グラフ", "p": "View 間の依存関係を可視化。循環参照の検出、孤立 View の発見、State→Binding フローの追跡ができます。" },
+    { "emoji": "🔍", "h": "State 監査", "p": "@State / @Binding / @Environment / @Observable のプロパティを検出し、private 修飾子の欠落や過剰な State を警告します。" },
+    { "emoji": "🎨", "h": "シンタックスハイライト", "p": "Swift コードを色分け表示。View ノードに対応する行をハイライトし、コードクリックでツリーを逆引きします。" },
+    { "emoji": "🔨", "h": "Xcode 連携", "p": "ハンマーアイコンをクリックすると、対応する行で Xcode を直接開きます（xed --line）。" },
+    { "emoji": "📐", "h": "アーキテクチャルール", "p": ".canopy-rules.json でカスタムルールを定義。命名規則・State 上限・ネスト深度制限などをチームで共有できます。" },
+    { "emoji": "🧩", "h": "プラグイン", "p": "カスタムルール・エクスポーター・アナライザーをプラグインとして追加可能。カタログから選んでインストールできます。" }
+  ],
+  "panels_h2": "パネル操作",
+  "panels_sub": "3ペイン + ボトムパネルの構成",
+  "panels": [
+    { "emoji": "📁", "h": "左: ファイルリスト", "p": "解析対象の Swift ファイル一覧。各ファイルにグレードバッジが付きます。クリックで選択。" },
+    { "emoji": "🌿", "h": "中央: View ツリー", "p": "View の階層構造。パンくずリスト、Peek Body（body プレビュー）、Code Vision メトリクスを表示。" },
+    { "emoji": "📝", "h": "右: ソースコード", "p": "行番号付きコード表示。行ドラッグで範囲選択 → ⌘C でコピー。コードクリックでツリー逆引き。" },
+    { "emoji": "📈", "h": "下: 分析パネル", "p": "品質・依存・統計の3タブ切替。リサイズ・折りたたみ可能。グレードバッジクリックで内訳ポップオーバー。" }
+  ],
+  "legend_h2": "アイコン・バッジ凡例",
+  "legend_sub": "ツリーとファイル一覧に表示される各要素の意味",
+  "legend_dots_h": "ノードアイコンの色",
+  "legend_dots": [
+    { "color": "blue", "k": "青", "v": "レイアウト — VStack / HStack / ZStack" },
+    { "color": "green", "k": "緑", "v": "インタラクション — Button / Toggle / Picker" },
+    { "color": "purple", "k": "紫", "v": "メディア — Image" },
+    { "color": "orange", "k": "オレンジ", "v": "ナビゲーション — NavigationStack / TabView" },
+    { "color": "cyan", "k": "シアン", "v": "リスト系 — List / ForEach / ScrollView" },
+    { "color": "yellow", "k": "黄", "v": "条件分岐 — if / switch" },
+    { "color": "gray", "k": "グレー", "v": "区切り — Divider / Spacer" }
+  ],
+  "legend_badges_h": "バッジ・マーカー",
+  "legend_badges": [
+    { "k": "[H] [V] [Z] [S] [L] [F] [G]", "v": "レイアウトバッジ — HStack / VStack / ZStack / ScrollView / List / Form / Grid" },
+    { "k": "3", "v": "Modifier 数バッジ — そのノードの .modifier の数" },
+    { "k": "👁", "v": "Peek Body — 右クリックで body を展開プレビュー" },
+    { "k": "L42", "v": "行番号 — ソースコード上の行位置" },
+    { "k": "NOW", "v": "1時間以内に更新（ファイル一覧に表示）" },
+    { "k": "TODAY", "v": "24時間以内に更新（ファイル一覧に表示）" },
+    { "k": "A〜F", "v": "グレードバッジ — クリックで複雑度の内訳を表示" }
+  ],
+  "keys_h2": "キーボードショートカット",
+  "keys_sub": "よく使う操作をすばやく実行",
+  "keys": [
+    { "label": "フォルダを開く", "keys": ["⌘ O"] },
+    { "label": "リロード", "keys": ["⌘ R"] },
+    { "label": "Quick Open", "keys": ["⌘ P"] },
+    { "label": "ファイル内検索", "keys": ["⌘ F"] },
+    { "label": "全体検索", "keys": ["⇧ ⌘ F"] },
+    { "label": "行にジャンプ", "keys": ["⌘ L"] },
+    { "label": "品質パネル", "keys": ["⇧ ⌘ I"] },
+    { "label": "依存パネル", "keys": ["⇧ ⌘ G"] },
+    { "label": "ツリー全展開", "keys": ["⇧ ⌘ E"] },
+    { "label": "ツリー全折りたたみ", "keys": ["⇧ ⌘ W"] },
+    { "label": "フォント拡大", "keys": ["⌘ +"] },
+    { "label": "フォント縮小", "keys": ["⌘ −"] },
+    { "label": "ヘルプ", "keys": ["⌘ /"] },
+    { "label": "フォントリセット", "keys": ["⌘ 0"] }
+  ],
+  "export_h2": "エクスポート",
+  "export_sub": "分析結果を様々な形式で出力",
+  "exports": [
+    { "emoji": "🌐", "h": "HTML レポート", "p": "静的 HTML で共有" },
+    { "emoji": "⚡", "h": "インタラクティブ HTML", "p": "操作可能なツリー付き" },
+    { "emoji": "📄", "h": "Markdown", "p": "ドキュメント向け" },
+    { "emoji": "📋", "h": "JSON", "p": "プログラム連携用" },
+    { "emoji": "🧜", "h": "Mermaid", "p": "依存関係図" },
+    { "emoji": "🌱", "h": "PlantUML", "p": "クラス図" },
+    { "emoji": "🔵", "h": "DOT (Graphviz)", "p": "グラフ描画" },
+    { "emoji": "📊", "h": "CSV", "p": "警告レポート" }
+  ],
+  "export_tip": "メニューバーの「プロジェクト → エクスポート」からすべての形式にアクセスできます。",
+  "cli_h2": "コマンドライン",
+  "cli_sub": "CI/CD パイプラインに組み込めるヘッドレス実行",
+  "cli_c1": "JSON 形式で解析結果を出力",
+  "cli_c2": "SARIF 形式（GitHub Code Scanning 連携）",
+  "cli_c3": "JSON Schema を表示",
+  "cli_setup": "CLI で解析するプロジェクトは、先に Canopy（GUI）で一度開いてください。アクセス権が保存され、以降は CLI から解析できるようになります。",
+  "cli_ci": "SARIF 出力を GitHub Actions にアップロードすると、PR 上で品質警告がインライン表示されます。",
+  "footer_support": "サポート",
+  "footer_privacy": "プライバシーポリシー",
+  "footer_contact": "お問い合わせ",
+  "copyright": "© 2026 Canopy. All rights reserved."
+}

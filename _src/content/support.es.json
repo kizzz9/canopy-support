@@ -1,0 +1,30 @@
+{
+  "title": "Canopy — Soporte",
+  "h1": "Soporte de Canopy",
+  "lede": "¿Necesitas ayuda? Encuentra respuestas y ponte en contacto con nosotros aquí.",
+  "guide_h2": "Guía de usuario",
+  "guide_sub": "Una guía completa de las funciones de Canopy y cómo utilizarlas",
+  "guide_card_h": "Lee la guía de usuario",
+  "guide_card_p": "¿Nuevo en Canopy? Empieza aquí. Cubre todas las funciones, el manejo de paneles, los atajos de teclado, los formatos de exportación y el uso de la CLI.",
+  "guide_btn": "Abrir guía",
+  "contact_h2": "Contacto",
+  "contact_sub": "Informes de errores, solicitudes de funciones y preguntas",
+  "contact_cards": [
+    { "emoji": "🐛", "h": "Informes de errores", "p": "¿Encontraste un error? Incluye los pasos para reproducirlo." },
+    { "emoji": "💡", "h": "Solicitudes de funciones", "p": "¿Tienes una idea para una nueva función? Nos encantaría conocerla." },
+    { "emoji": "❓", "h": "Preguntas", "p": "¿Dudas sobre el uso o las especificaciones? No dudes en preguntar." }
+  ],
+  "faq_h2": "Preguntas frecuentes",
+  "faq_sub": "Preguntas habituales antes y después de la compra",
+  "faq": [
+    { "q": "¿Canopy modifica el código de mi proyecto?", "a": "No. Canopy es completamente de solo lectura. Nunca modifica, elimina ni escribe en tus archivos." },
+    { "q": "¿Requiere conexión a internet?", "a": "No. Todo el análisis se ejecuta localmente en tu Mac. Los datos nunca se envían al exterior." },
+    { "q": "¿Cuáles son los requisitos del sistema?", "a": "Se requiere macOS 15.0 (Sequoia) o posterior. Es compatible tanto con Mac Apple Silicon como con Mac Intel." },
+    { "q": "¿Qué tipos de proyectos son compatibles?", "a": "Canopy analiza proyectos Swift que utilizan SwiftUI. El código UIKit y Objective-C no se analiza." },
+    { "q": "¿Puedo definir reglas personalizadas?", "a": "Sí. Coloca un archivo .canopy-rules.json o .canopy-rules.yml en la raíz de tu proyecto para definir convenciones de nomenclatura, límites de State, restricciones de profundidad de anidamiento y más. Compártelas con tu equipo." },
+    { "q": "¿Cómo se calculan las notas?", "a": "Las notas se basan en 5 factores: complejidad, profundidad de anidamiento, número de State, Body Weight y número de modifiers. La escala va de A (excelente) a F (requiere mejora), siendo C o superior el nivel recomendado." }
+  ],
+  "footer_privacy": "Política de Privacidad",
+  "footer_contact": "Contacto",
+  "copyright": "© 2026 Canopy. All rights reserved."
+}

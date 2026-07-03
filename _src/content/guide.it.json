@@ -1,0 +1,103 @@
+{
+  "title": "Canopy — Guida utente",
+  "h1": "Guida utente di Canopy",
+  "lede": "Uno strumento di sviluppo per macOS per la visualizzazione e l'analisi delle gerarchie di View SwiftUI",
+  "pill_readonly": "Sola lettura",
+  "pill_offline": "Completamente offline",
+  "toc": [
+    ["start", "Per iniziare"], ["features", "Funzionalità"], ["panels", "Pannelli"], ["legend", "Legenda"],
+    ["shortcuts", "Scorciatoie"], ["export", "Esportazione"], ["cli", "CLI"]
+  ],
+  "start_h2": "Per iniziare",
+  "start_sub": "Analizza il tuo progetto SwiftUI in 3 semplici passaggi",
+  "steps": [
+    { "h": "Apri una cartella", "p": "Premi <kbd>⌘ O</kbd> per selezionare la cartella del tuo progetto. Canopy rileva automaticamente i file .swift e avvia l'analisi AST." },
+    { "h": "Esplora l'albero delle View", "p": "Il pannello sinistro mostra l'elenco dei file, il centro mostra l'albero delle View. Clicca su un nodo per vedere il codice sorgente evidenziato nel pannello destro." },
+    { "h": "Analizza la qualità", "p": "Il pannello inferiore mostra i voti di qualità, i grafi delle dipendenze e le statistiche. Clicca su un badge del voto per vedere la ripartizione della complessità." }
+  ],
+  "start_tip": "Canopy è di sola lettura. Non modifica né elimina mai il codice del tuo progetto. Usalo con fiducia.",
+  "features_h2": "Funzionalità principali",
+  "features_sub": "Le funzionalità di ispezione offerte da Canopy",
+  "features": [
+    { "emoji": "🌲", "h": "Visualizzazione dell'albero delle View", "p": "Visualizza le gerarchie di View SwiftUI come struttura ad albero. Rileva View annidate, @ViewBuilder e funzioni View nelle extension." },
+    { "emoji": "📊", "h": "Analisi della qualità", "p": "Assegna un voto da A a F a ogni View. Valuta complessità, profondità di annidamento, numero di State, Body Weight e ordine dei modifier." },
+    { "emoji": "🔗", "h": "Grafo delle dipendenze", "p": "Visualizza le dipendenze tra le View. Rileva riferimenti circolari, individua le View isolate e traccia il flusso da State a Binding." },
+    { "emoji": "🔍", "h": "Audit @State", "p": "Rileva le proprietà @State, @Binding, @Environment e @Observable. Avvisa in caso di modificatori private mancanti e uso eccessivo di State." },
+    { "emoji": "🎨", "h": "Evidenziazione della sintassi", "p": "Visualizzazione a colori del codice Swift. Evidenzia le righe corrispondenti ai nodi View. Clicca sul codice per la ricerca inversa nell'albero." },
+    { "emoji": "🔨", "h": "Integrazione con Xcode", "p": "Clicca sull'icona del martello per aprire direttamente la riga corrispondente in Xcode (tramite xed --line)." },
+    { "emoji": "📐", "h": "Regole di architettura", "p": "Definisci regole personalizzate con .canopy-rules.json. Condividi convenzioni di denominazione, limiti di State e restrizioni sulla profondità di annidamento con il tuo team." },
+    { "emoji": "🧩", "h": "Plugin", "p": "Aggiungi regole personalizzate, esportatori e analizzatori come plugin. Sfoglia e installa dal catalogo dei plugin." }
+  ],
+  "panels_h2": "Disposizione dei pannelli",
+  "panels_sub": "Struttura a 3 riquadri + pannello inferiore",
+  "panels": [
+    { "emoji": "📁", "h": "Sinistra: elenco file", "p": "Elenco dei file Swift analizzati. Ogni file mostra un badge del voto. Clicca per selezionare." },
+    { "emoji": "🌿", "h": "Centro: albero delle View", "p": "Struttura della gerarchia delle View. Mostra breadcrumb, Peek Body (anteprima del body) e metriche Code Vision." },
+    { "emoji": "📝", "h": "Destra: codice sorgente", "p": "Visualizzazione del codice con numeri di riga. Trascina i numeri di riga per selezionare un intervallo, poi copia con ⌘C. Clicca sul codice per la ricerca inversa nell'albero." },
+    { "emoji": "📈", "h": "In basso: pannello di analisi", "p": "Tre schede: Qualità, Dipendenze, Statistiche. Ridimensionabile e comprimibile. Clicca sui badge dei voti per i popover di dettaglio." }
+  ],
+  "legend_h2": "Icone e badge",
+  "legend_sub": "Significato di ogni elemento mostrato nell'albero e nell'elenco file",
+  "legend_dots_h": "Colori delle icone dei nodi",
+  "legend_dots": [
+    { "color": "blue", "k": "Blu", "v": "Layout — VStack / HStack / ZStack" },
+    { "color": "green", "k": "Verde", "v": "Interazione — Button / Toggle / Picker" },
+    { "color": "purple", "k": "Viola", "v": "Media — Image" },
+    { "color": "orange", "k": "Arancione", "v": "Navigazione — NavigationStack / TabView" },
+    { "color": "cyan", "k": "Ciano", "v": "Liste — List / ForEach / ScrollView" },
+    { "color": "yellow", "k": "Giallo", "v": "Condizionali — if / switch" },
+    { "color": "gray", "k": "Grigio", "v": "Separatori — Divider / Spacer" }
+  ],
+  "legend_badges_h": "Badge e marcatori",
+  "legend_badges": [
+    { "k": "[H] [V] [Z] [S] [L] [F] [G]", "v": "Badge di layout — HStack / VStack / ZStack / ScrollView / List / Form / Grid" },
+    { "k": "3", "v": "Badge del numero di modifier — numero di .modifier sul nodo" },
+    { "k": "👁", "v": "Peek Body — clic destro per espandere l'anteprima del body" },
+    { "k": "L42", "v": "Numero di riga — posizione nel codice sorgente" },
+    { "k": "NOW", "v": "Aggiornato nell'ultima ora (mostrato nell'elenco file)" },
+    { "k": "TODAY", "v": "Aggiornato nelle ultime 24 ore (mostrato nell'elenco file)" },
+    { "k": "A–F", "v": "Badge del voto — clicca per vedere la ripartizione della complessità" }
+  ],
+  "keys_h2": "Scorciatoie da tastiera",
+  "keys_sub": "Accesso rapido alle operazioni comuni",
+  "keys": [
+    { "label": "Apri cartella", "keys": ["⌘ O"] },
+    { "label": "Ricarica", "keys": ["⌘ R"] },
+    { "label": "Quick Open", "keys": ["⌘ P"] },
+    { "label": "Trova nel file", "keys": ["⌘ F"] },
+    { "label": "Cerca in tutti i file", "keys": ["⇧ ⌘ F"] },
+    { "label": "Vai alla riga", "keys": ["⌘ L"] },
+    { "label": "Pannello qualità", "keys": ["⇧ ⌘ I"] },
+    { "label": "Pannello dipendenze", "keys": ["⇧ ⌘ G"] },
+    { "label": "Espandi tutto", "keys": ["⇧ ⌘ E"] },
+    { "label": "Comprimi tutto", "keys": ["⇧ ⌘ W"] },
+    { "label": "Aumenta dimensione del carattere", "keys": ["⌘ +"] },
+    { "label": "Riduci dimensione del carattere", "keys": ["⌘ −"] },
+    { "label": "Aiuto", "keys": ["⌘ /"] },
+    { "label": "Ripristina dimensione del carattere", "keys": ["⌘ 0"] }
+  ],
+  "export_h2": "Esportazione",
+  "export_sub": "Esporta i risultati dell'analisi in vari formati",
+  "exports": [
+    { "emoji": "🌐", "h": "Rapporto HTML", "p": "Condividi come HTML statico" },
+    { "emoji": "⚡", "h": "HTML interattivo", "p": "Con albero interattivo" },
+    { "emoji": "📄", "h": "Markdown", "p": "Per la documentazione" },
+    { "emoji": "📋", "h": "JSON", "p": "Per uso programmatico" },
+    { "emoji": "🧜", "h": "Mermaid", "p": "Diagrammi delle dipendenze" },
+    { "emoji": "🌱", "h": "PlantUML", "p": "Diagrammi delle classi" },
+    { "emoji": "🔵", "h": "DOT (Graphviz)", "p": "Rendering del grafo" },
+    { "emoji": "📊", "h": "CSV", "p": "Rapporti degli avvisi" }
+  ],
+  "export_tip": "Accedi a tutti i formati di esportazione dalla barra dei menu in \"Progetto → Esportazione\".",
+  "cli_h2": "Riga di comando",
+  "cli_sub": "Esecuzione headless per l'integrazione con pipeline CI/CD",
+  "cli_c1": "Restituisce i risultati dell'analisi in formato JSON",
+  "cli_c2": "Formato SARIF (per GitHub Code Scanning)",
+  "cli_c3": "Mostra lo schema JSON",
+  "cli_setup": "Prima di usare la CLI, apri una volta la cartella del progetto in Canopy (GUI). I permessi di accesso verranno salvati, e da quel momento potrai analizzare dalla CLI.",
+  "cli_ci": "Carica l'output SARIF su GitHub Actions per mostrare gli avvisi di qualità direttamente nelle pull request.",
+  "footer_support": "Assistenza",
+  "footer_privacy": "Informativa sulla privacy",
+  "footer_contact": "Contatti",
+  "copyright": "© 2026 Canopy. All rights reserved."
+}

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="SwiftUI プロジェクトの View 階層を可視化・分析する macOS 開発ツール">
-<title>Canopy — 使い方ガイド</title>
-<link rel="icon" href="../icon.png">
+<meta name="description" content="Un outil de développement macOS pour visualiser et analyser les hiérarchies de Views SwiftUI">
+<title>Canopy — Guide utilisateur</title>
+<link rel="icon" href="../../icon.png">
 <link rel="alternate" hreflang="ja" href="https://kizzz9.github.io/canopy-support/guide/">
 <link rel="alternate" hreflang="en" href="https://kizzz9.github.io/canopy-support/guide/en/">
 <link rel="alternate" hreflang="fr" href="https://kizzz9.github.io/canopy-support/guide/fr/">
@@ -193,127 +193,127 @@ footer a:hover { text-decoration: underline; }
 </head>
 <body>
 <header class="hero">
-<div class="langs"><b>日本語</b><a href="../en/">English</a><a href="../fr/">Français</a><a href="../de/">Deutsch</a><a href="../es/">Español</a><a href="../it/">Italiano</a></div>
-<img class="icon" src="../icon.png" alt="Canopy">
-<h1>Canopy 使い方ガイド</h1>
-<p class="lede">SwiftUI プロジェクトの View 階層を可視化・分析する macOS 開発ツール</p>
-<div class="meta-pills"><span>macOS 15.0+</span><span>読み取り専用</span><span>完全オフライン</span></div>
-<nav class="toc"><a href="#start">はじめに</a><a href="#features">機能一覧</a><a href="#panels">パネル操作</a><a href="#legend">凡例</a><a href="#shortcuts">ショートカット</a><a href="#export">エクスポート</a><a href="#cli">CLI</a></nav>
+<div class="langs"><a href="../../">日本語</a><a href="../../en/">English</a><b>Français</b><a href="../../de/">Deutsch</a><a href="../../es/">Español</a><a href="../../it/">Italiano</a></div>
+<img class="icon" src="../../icon.png" alt="Canopy">
+<h1>Guide utilisateur Canopy</h1>
+<p class="lede">Un outil de développement macOS pour visualiser et analyser les hiérarchies de Views SwiftUI</p>
+<div class="meta-pills"><span>macOS 15.0+</span><span>Lecture seule</span><span>100 % hors ligne</span></div>
+<nav class="toc"><a href="#start">Prise en main</a><a href="#features">Fonctionnalités</a><a href="#panels">Panneaux</a><a href="#legend">Légende</a><a href="#shortcuts">Raccourcis</a><a href="#export">Exportation</a><a href="#cli">CLI</a></nav>
 </header>
 <main class="container">
 <section class="section" id="start">
 <span class="eyebrow">Getting Started</span>
-<h2>はじめに</h2>
-<p class="sub">3ステップで SwiftUI プロジェクトを解析できます</p>
+<h2>Prise en main</h2>
+<p class="sub">Analysez votre projet SwiftUI en 3 étapes simples</p>
 <div class="steps">
-<div class="step"><div class="n">1</div><div><h3>フォルダを開く</h3><p><kbd>⌘ O</kbd> でプロジェクトフォルダを選択します。Canopy が .swift ファイルを自動検出し、AST 解析を開始します。</p></div></div>
-<div class="step"><div class="n">2</div><div><h3>View ツリーを探索</h3><p>左パネルにファイル一覧、中央に View ツリーが表示されます。ノードをクリックすると、右パネルにソースコードがハイライト表示されます。</p></div></div>
-<div class="step"><div class="n">3</div><div><h3>品質を分析</h3><p>下部パネルで品質スコア・依存グラフ・統計情報を確認できます。各 View のグレードバッジをクリックすると、複雑度の内訳が表示されます。</p></div></div>
+<div class="step"><div class="n">1</div><div><h3>Ouvrir un dossier</h3><p>Appuyez sur <kbd>⌘ O</kbd> pour sélectionner le dossier de votre projet. Canopy détecte automatiquement les fichiers .swift et lance l'analyse AST.</p></div></div>
+<div class="step"><div class="n">2</div><div><h3>Explorer l'arborescence des Views</h3><p>Le panneau de gauche affiche la liste des fichiers, le panneau central affiche l'arborescence des Views. Cliquez sur un nœud pour voir son code source mis en évidence dans le panneau de droite.</p></div></div>
+<div class="step"><div class="n">3</div><div><h3>Analyser la qualité</h3><p>Le panneau inférieur affiche les scores de qualité, les graphes de dépendances et les statistiques. Cliquez sur un badge de grade pour voir le détail de la complexité.</p></div></div>
 </div>
-<div class="tip"><b>TIP</b>Canopy は読み取り専用です。プロジェクトのコードを変更・削除することは一切ありません。安心して使えます。</div>
+<div class="tip"><b>TIP</b>Canopy est en lecture seule. Il ne modifie ni ne supprime jamais le code de votre projet. Utilisez-le en toute confiance.</div>
 </section>
 <section class="section" id="features">
 <span class="eyebrow">Features</span>
-<h2>主な機能</h2>
-<p class="sub">Canopy が提供するインスペクション機能</p>
+<h2>Fonctionnalités clés</h2>
+<p class="sub">Les capacités d'inspection offertes par Canopy</p>
 <div class="grid">
-<div class="card"><span class="emoji">🌲</span><h3>View ツリー表示</h3><p>SwiftUI の View 階層をツリー構造で可視化。ネストされた View、@ViewBuilder、extension 内の View 関数も検出します。</p></div>
-<div class="card"><span class="emoji">📊</span><h3>品質分析</h3><p>各 View に A〜F のグレードを付与。複雑度・ネスト深度・State 数・Body Weight・Modifier 順序を評価します。</p></div>
-<div class="card"><span class="emoji">🔗</span><h3>依存グラフ</h3><p>View 間の依存関係を可視化。循環参照の検出、孤立 View の発見、State→Binding フローの追跡ができます。</p></div>
-<div class="card"><span class="emoji">🔍</span><h3>State 監査</h3><p>@State / @Binding / @Environment / @Observable のプロパティを検出し、private 修飾子の欠落や過剰な State を警告します。</p></div>
-<div class="card"><span class="emoji">🎨</span><h3>シンタックスハイライト</h3><p>Swift コードを色分け表示。View ノードに対応する行をハイライトし、コードクリックでツリーを逆引きします。</p></div>
-<div class="card"><span class="emoji">🔨</span><h3>Xcode 連携</h3><p>ハンマーアイコンをクリックすると、対応する行で Xcode を直接開きます（xed --line）。</p></div>
-<div class="card"><span class="emoji">📐</span><h3>アーキテクチャルール</h3><p>.canopy-rules.json でカスタムルールを定義。命名規則・State 上限・ネスト深度制限などをチームで共有できます。</p></div>
-<div class="card"><span class="emoji">🧩</span><h3>プラグイン</h3><p>カスタムルール・エクスポーター・アナライザーをプラグインとして追加可能。カタログから選んでインストールできます。</p></div>
+<div class="card"><span class="emoji">🌲</span><h3>Affichage de l'arborescence des Views</h3><p>Visualisez les hiérarchies de Views SwiftUI sous forme d'arborescence. Détecte les Views imbriquées, les @ViewBuilder et les fonctions de View dans les extensions.</p></div>
+<div class="card"><span class="emoji">📊</span><h3>Analyse de qualité</h3><p>Attribue un grade de A à F à chaque View. Évalue la complexité, la profondeur d'imbrication, le nombre de State, le Body Weight et l'ordre des modifiers.</p></div>
+<div class="card"><span class="emoji">🔗</span><h3>Graphe de dépendances</h3><p>Visualisez les dépendances entre les Views. Détectez les références circulaires, repérez les Views isolées et suivez le flux State→Binding.</p></div>
+<div class="card"><span class="emoji">🔍</span><h3>Audit State</h3><p>Détecte les propriétés @State, @Binding, @Environment et @Observable. Avertit en cas d'absence du modifier private ou d'utilisation excessive de State.</p></div>
+<div class="card"><span class="emoji">🎨</span><h3>Coloration syntaxique</h3><p>Affichage du code Swift en couleurs. Met en évidence les lignes correspondant aux nœuds de View. Cliquez sur le code pour effectuer une recherche inversée dans l'arborescence.</p></div>
+<div class="card"><span class="emoji">🔨</span><h3>Intégration Xcode</h3><p>Cliquez sur l'icône de marteau pour ouvrir directement la ligne correspondante dans Xcode (via xed --line).</p></div>
+<div class="card"><span class="emoji">📐</span><h3>Règles d'architecture</h3><p>Définissez des règles personnalisées avec .canopy-rules.json. Partagez les conventions de nommage, les limites de State et les restrictions de profondeur d'imbrication au sein de votre équipe.</p></div>
+<div class="card"><span class="emoji">🧩</span><h3>Plugins</h3><p>Ajoutez des règles, exporteurs et analyseurs personnalisés sous forme de plugins. Parcourez et installez-les depuis le catalogue de plugins.</p></div>
 </div>
 </section>
 <section class="section" id="panels">
 <span class="eyebrow">Interface</span>
-<h2>パネル操作</h2>
-<p class="sub">3ペイン + ボトムパネルの構成</p>
+<h2>Disposition des panneaux</h2>
+<p class="sub">Disposition en 3 volets + panneau inférieur</p>
 <div class="grid">
-<div class="card"><span class="emoji">📁</span><h3>左: ファイルリスト</h3><p>解析対象の Swift ファイル一覧。各ファイルにグレードバッジが付きます。クリックで選択。</p></div>
-<div class="card"><span class="emoji">🌿</span><h3>中央: View ツリー</h3><p>View の階層構造。パンくずリスト、Peek Body（body プレビュー）、Code Vision メトリクスを表示。</p></div>
-<div class="card"><span class="emoji">📝</span><h3>右: ソースコード</h3><p>行番号付きコード表示。行ドラッグで範囲選択 → ⌘C でコピー。コードクリックでツリー逆引き。</p></div>
-<div class="card"><span class="emoji">📈</span><h3>下: 分析パネル</h3><p>品質・依存・統計の3タブ切替。リサイズ・折りたたみ可能。グレードバッジクリックで内訳ポップオーバー。</p></div>
+<div class="card"><span class="emoji">📁</span><h3>Gauche : liste des fichiers</h3><p>Liste des fichiers Swift analysés. Chaque fichier affiche un badge de grade. Cliquez pour sélectionner.</p></div>
+<div class="card"><span class="emoji">🌿</span><h3>Centre : arborescence des Views</h3><p>Structure hiérarchique des Views. Affiche le fil d'Ariane, Peek Body (aperçu du body) et les métriques Code Vision.</p></div>
+<div class="card"><span class="emoji">📝</span><h3>Droite : code source</h3><p>Affichage du code avec numéros de ligne. Faites glisser les numéros de ligne pour sélectionner une plage, puis copiez avec ⌘C. Cliquez sur le code pour effectuer une recherche inversée dans l'arborescence.</p></div>
+<div class="card"><span class="emoji">📈</span><h3>Bas : panneau d'analyse</h3><p>Trois onglets : Qualité, Dépendances, Statistiques. Redimensionnable et repliable. Cliquez sur les badges de grade pour afficher le détail dans une fenêtre contextuelle.</p></div>
 </div>
 </section>
 <section class="section" id="legend">
 <span class="eyebrow">Legend</span>
-<h2>アイコン・バッジ凡例</h2>
-<p class="sub">ツリーとファイル一覧に表示される各要素の意味</p>
-<h3 style="margin-bottom:12px;font-size:1.02em">ノードアイコンの色</h3>
+<h2>Icônes et badges</h2>
+<p class="sub">Signification des éléments affichés dans l'arborescence et la liste des fichiers</p>
+<h3 style="margin-bottom:12px;font-size:1.02em">Couleurs des icônes de nœud</h3>
 <div class="legend">
-<div class="row"><span class="dot" style="background:#54A0FF"></span><span class="k">青</span><span>レイアウト — VStack / HStack / ZStack</span></div>
-<div class="row"><span class="dot" style="background:#5BE49B"></span><span class="k">緑</span><span>インタラクション — Button / Toggle / Picker</span></div>
-<div class="row"><span class="dot" style="background:#B98AF5"></span><span class="k">紫</span><span>メディア — Image</span></div>
-<div class="row"><span class="dot" style="background:#FFA45B"></span><span class="k">オレンジ</span><span>ナビゲーション — NavigationStack / TabView</span></div>
-<div class="row"><span class="dot" style="background:#48D8E0"></span><span class="k">シアン</span><span>リスト系 — List / ForEach / ScrollView</span></div>
-<div class="row"><span class="dot" style="background:#F5D76E"></span><span class="k">黄</span><span>条件分岐 — if / switch</span></div>
-<div class="row"><span class="dot" style="background:#8A9A8E"></span><span class="k">グレー</span><span>区切り — Divider / Spacer</span></div>
+<div class="row"><span class="dot" style="background:#54A0FF"></span><span class="k">Bleu</span><span>Mise en page — VStack / HStack / ZStack</span></div>
+<div class="row"><span class="dot" style="background:#5BE49B"></span><span class="k">Vert</span><span>Interaction — Button / Toggle / Picker</span></div>
+<div class="row"><span class="dot" style="background:#B98AF5"></span><span class="k">Violet</span><span>Média — Image</span></div>
+<div class="row"><span class="dot" style="background:#FFA45B"></span><span class="k">Orange</span><span>Navigation — NavigationStack / TabView</span></div>
+<div class="row"><span class="dot" style="background:#48D8E0"></span><span class="k">Cyan</span><span>Listes — List / ForEach / ScrollView</span></div>
+<div class="row"><span class="dot" style="background:#F5D76E"></span><span class="k">Jaune</span><span>Conditionnel — if / switch</span></div>
+<div class="row"><span class="dot" style="background:#8A9A8E"></span><span class="k">Gris</span><span>Séparateurs — Divider / Spacer</span></div>
 </div>
-<h3 style="margin:26px 0 12px;font-size:1.02em">バッジ・マーカー</h3>
+<h3 style="margin:26px 0 12px;font-size:1.02em">Badges et marqueurs</h3>
 <div class="legend">
-<div class="row"><span class="k">[H] [V] [Z] [S] [L] [F] [G]</span><span>レイアウトバッジ — HStack / VStack / ZStack / ScrollView / List / Form / Grid</span></div>
-<div class="row"><span class="k">3</span><span>Modifier 数バッジ — そのノードの .modifier の数</span></div>
-<div class="row"><span class="k">👁</span><span>Peek Body — 右クリックで body を展開プレビュー</span></div>
-<div class="row"><span class="k">L42</span><span>行番号 — ソースコード上の行位置</span></div>
-<div class="row"><span class="k">NOW</span><span>1時間以内に更新（ファイル一覧に表示）</span></div>
-<div class="row"><span class="k">TODAY</span><span>24時間以内に更新（ファイル一覧に表示）</span></div>
-<div class="row"><span class="k">A〜F</span><span>グレードバッジ — クリックで複雑度の内訳を表示</span></div>
+<div class="row"><span class="k">[H] [V] [Z] [S] [L] [F] [G]</span><span>Badges de mise en page — HStack / VStack / ZStack / ScrollView / List / Form / Grid</span></div>
+<div class="row"><span class="k">3</span><span>Badge du nombre de modifiers — nombre de .modifiers sur le nœud</span></div>
+<div class="row"><span class="k">👁</span><span>Peek Body — clic droit pour afficher l'aperçu du body</span></div>
+<div class="row"><span class="k">L42</span><span>Numéro de ligne — position dans le code source</span></div>
+<div class="row"><span class="k">NOW</span><span>Mis à jour il y a moins d'une heure (affiché dans la liste des fichiers)</span></div>
+<div class="row"><span class="k">TODAY</span><span>Mis à jour il y a moins de 24 heures (affiché dans la liste des fichiers)</span></div>
+<div class="row"><span class="k">A–F</span><span>Badge de grade — cliquez pour voir le détail de la complexité</span></div>
 </div>
 </section>
 <section class="section" id="shortcuts">
 <span class="eyebrow">Shortcuts</span>
-<h2>キーボードショートカット</h2>
-<p class="sub">よく使う操作をすばやく実行</p>
+<h2>Raccourcis clavier</h2>
+<p class="sub">Accès rapide aux opérations courantes</p>
 <div class="keys">
-<div class="row"><span>フォルダを開く</span><span><kbd>⌘ O</kbd></span></div>
-<div class="row"><span>リロード</span><span><kbd>⌘ R</kbd></span></div>
+<div class="row"><span>Ouvrir un dossier</span><span><kbd>⌘ O</kbd></span></div>
+<div class="row"><span>Recharger</span><span><kbd>⌘ R</kbd></span></div>
 <div class="row"><span>Quick Open</span><span><kbd>⌘ P</kbd></span></div>
-<div class="row"><span>ファイル内検索</span><span><kbd>⌘ F</kbd></span></div>
-<div class="row"><span>全体検索</span><span><kbd>⇧ ⌘ F</kbd></span></div>
-<div class="row"><span>行にジャンプ</span><span><kbd>⌘ L</kbd></span></div>
-<div class="row"><span>品質パネル</span><span><kbd>⇧ ⌘ I</kbd></span></div>
-<div class="row"><span>依存パネル</span><span><kbd>⇧ ⌘ G</kbd></span></div>
-<div class="row"><span>ツリー全展開</span><span><kbd>⇧ ⌘ E</kbd></span></div>
-<div class="row"><span>ツリー全折りたたみ</span><span><kbd>⇧ ⌘ W</kbd></span></div>
-<div class="row"><span>フォント拡大</span><span><kbd>⌘ +</kbd></span></div>
-<div class="row"><span>フォント縮小</span><span><kbd>⌘ −</kbd></span></div>
-<div class="row"><span>ヘルプ</span><span><kbd>⌘ /</kbd></span></div>
-<div class="row"><span>フォントリセット</span><span><kbd>⌘ 0</kbd></span></div>
+<div class="row"><span>Recherche dans le fichier</span><span><kbd>⌘ F</kbd></span></div>
+<div class="row"><span>Recherche globale</span><span><kbd>⇧ ⌘ F</kbd></span></div>
+<div class="row"><span>Atteindre la ligne</span><span><kbd>⌘ L</kbd></span></div>
+<div class="row"><span>Panneau Qualité</span><span><kbd>⇧ ⌘ I</kbd></span></div>
+<div class="row"><span>Panneau Dépendances</span><span><kbd>⇧ ⌘ G</kbd></span></div>
+<div class="row"><span>Tout développer</span><span><kbd>⇧ ⌘ E</kbd></span></div>
+<div class="row"><span>Tout réduire</span><span><kbd>⇧ ⌘ W</kbd></span></div>
+<div class="row"><span>Augmenter la taille de police</span><span><kbd>⌘ +</kbd></span></div>
+<div class="row"><span>Réduire la taille de police</span><span><kbd>⌘ −</kbd></span></div>
+<div class="row"><span>Aide</span><span><kbd>⌘ /</kbd></span></div>
+<div class="row"><span>Réinitialiser la taille de police</span><span><kbd>⌘ 0</kbd></span></div>
 </div>
 </section>
 <section class="section" id="export">
 <span class="eyebrow">Export</span>
-<h2>エクスポート</h2>
-<p class="sub">分析結果を様々な形式で出力</p>
+<h2>Exportation</h2>
+<p class="sub">Exportez les résultats d'analyse dans différents formats</p>
 <div class="grid">
-<div class="card"><span class="emoji">🌐</span><h3>HTML レポート</h3><p>静的 HTML で共有</p></div>
-<div class="card"><span class="emoji">⚡</span><h3>インタラクティブ HTML</h3><p>操作可能なツリー付き</p></div>
-<div class="card"><span class="emoji">📄</span><h3>Markdown</h3><p>ドキュメント向け</p></div>
-<div class="card"><span class="emoji">📋</span><h3>JSON</h3><p>プログラム連携用</p></div>
-<div class="card"><span class="emoji">🧜</span><h3>Mermaid</h3><p>依存関係図</p></div>
-<div class="card"><span class="emoji">🌱</span><h3>PlantUML</h3><p>クラス図</p></div>
-<div class="card"><span class="emoji">🔵</span><h3>DOT (Graphviz)</h3><p>グラフ描画</p></div>
-<div class="card"><span class="emoji">📊</span><h3>CSV</h3><p>警告レポート</p></div>
+<div class="card"><span class="emoji">🌐</span><h3>Rapport HTML</h3><p>Partager en HTML statique</p></div>
+<div class="card"><span class="emoji">⚡</span><h3>HTML interactif</h3><p>Avec arborescence interactive</p></div>
+<div class="card"><span class="emoji">📄</span><h3>Markdown</h3><p>Pour la documentation</p></div>
+<div class="card"><span class="emoji">📋</span><h3>JSON</h3><p>Pour un usage programmatique</p></div>
+<div class="card"><span class="emoji">🧜</span><h3>Mermaid</h3><p>Diagrammes de dépendances</p></div>
+<div class="card"><span class="emoji">🌱</span><h3>PlantUML</h3><p>Diagrammes de classes</p></div>
+<div class="card"><span class="emoji">🔵</span><h3>DOT (Graphviz)</h3><p>Rendu de graphe</p></div>
+<div class="card"><span class="emoji">📊</span><h3>CSV</h3><p>Rapports d'avertissements</p></div>
 </div>
-<div class="tip"><b>TIP</b>メニューバーの「プロジェクト → エクスポート」からすべての形式にアクセスできます。</div>
+<div class="tip"><b>TIP</b>Accédez à tous les formats d'exportation depuis la barre de menus, sous « Projet → Exportation ».</div>
 </section>
 <section class="section" id="cli">
 <span class="eyebrow">CLI</span>
-<h2>コマンドライン</h2>
-<p class="sub">CI/CD パイプラインに組み込めるヘッドレス実行</p>
-<pre class="term"><span class="c"># JSON 形式で解析結果を出力</span>
+<h2>Ligne de commande</h2>
+<p class="sub">Exécution headless pour l'intégration dans un pipeline CI/CD</p>
+<pre class="term"><span class="c"># Affiche les résultats d'analyse au format JSON</span>
 <span class="p">$</span> Canopy --analyze /path/to/project --format json
 
-<span class="c"># SARIF 形式（GitHub Code Scanning 連携）</span>
+<span class="c"># Format SARIF (pour GitHub Code Scanning)</span>
 <span class="p">$</span> Canopy --analyze /path/to/project --format sarif
 
-<span class="c"># JSON Schema を表示</span>
+<span class="c"># Afficher le schéma JSON</span>
 <span class="p">$</span> Canopy --format json-schema</pre>
-<div class="tip"><b>SETUP</b>CLI で解析するプロジェクトは、先に Canopy（GUI）で一度開いてください。アクセス権が保存され、以降は CLI から解析できるようになります。</div>
-<div class="tip"><b>CI</b>SARIF 出力を GitHub Actions にアップロードすると、PR 上で品質警告がインライン表示されます。</div>
+<div class="tip"><b>SETUP</b>Avant d'utiliser la CLI, ouvrez d'abord une fois le dossier du projet dans Canopy (interface graphique). Les droits d'accès sont enregistrés, et vous pourrez ensuite analyser depuis la CLI.</div>
+<div class="tip"><b>CI</b>Téléversez la sortie SARIF vers GitHub Actions pour afficher les avertissements de qualité directement dans les pull requests.</div>
 </section>
 </main>
-<footer><nav><a href="https://kizzz9.github.io/canopy-support/">サポート</a><a href="https://kizzz9.github.io/canopy-privacy-policy/">プライバシーポリシー</a><a href="https://github.com/kizzz9/Canopy/issues">お問い合わせ</a></nav><div>© 2026 Canopy. All rights reserved.</div></footer></body></html>
+<footer><nav><a href="https://kizzz9.github.io/canopy-support/fr/">Support</a><a href="https://kizzz9.github.io/canopy-privacy-policy/fr/">Politique de confidentialité</a><a href="https://github.com/kizzz9/Canopy/issues">Contact</a></nav><div>© 2026 Canopy. All rights reserved.</div></footer></body></html>

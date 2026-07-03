@@ -1,0 +1,30 @@
+{
+  "title": "Canopy — Support",
+  "h1": "Canopy Support",
+  "lede": "Brauchst du Hilfe? Hier findest du Antworten und kannst uns kontaktieren.",
+  "guide_h2": "Benutzerhandbuch",
+  "guide_sub": "Eine umfassende Anleitung zu den Funktionen von Canopy und ihrer Nutzung",
+  "guide_card_h": "Benutzerhandbuch lesen",
+  "guide_card_p": "Neu bei Canopy? Hier starten. Behandelt alle Funktionen, Panel-Bedienung, Tastaturkürzel, Exportformate und CLI-Nutzung.",
+  "guide_btn": "Handbuch öffnen",
+  "contact_h2": "Kontakt aufnehmen",
+  "contact_sub": "Fehlermeldungen, Feature-Wünsche und Fragen",
+  "contact_cards": [
+    { "emoji": "🐛", "h": "Fehlermeldungen", "p": "Einen Fehler gefunden? Bitte gib die Schritte zur Reproduktion an." },
+    { "emoji": "💡", "h": "Feature-Wünsche", "p": "Du hast eine Idee für eine neue Funktion? Wir freuen uns, davon zu hören." },
+    { "emoji": "❓", "h": "Fragen", "p": "Fragen zur Nutzung oder zu den Spezifikationen? Frag einfach nach." }
+  ],
+  "faq_h2": "Häufig gestellte Fragen",
+  "faq_sub": "Häufige Fragen vor und nach dem Kauf",
+  "faq": [
+    { "q": "Verändert Canopy den Code meines Projekts?", "a": "Nein. Canopy ist vollständig schreibgeschützt. Es verändert, löscht oder beschreibt deine Dateien niemals." },
+    { "q": "Ist eine Internetverbindung erforderlich?", "a": "Nein. Die gesamte Analyse läuft lokal auf deinem Mac. Es werden niemals Daten nach außen gesendet." },
+    { "q": "Welche Systemanforderungen gibt es?", "a": "macOS 15.0 (Sequoia) oder neuer ist erforderlich. Sowohl Apple Silicon als auch Intel Macs werden unterstützt." },
+    { "q": "Welche Arten von Projekten werden unterstützt?", "a": "Canopy analysiert Swift-Projekte, die SwiftUI verwenden. UIKit- und Objective-C-Code werden nicht analysiert." },
+    { "q": "Kann ich eigene Regeln festlegen?", "a": "Ja. Platziere eine Datei .canopy-rules.json oder .canopy-rules.yml im Projekt-Root, um Namenskonventionen, State-Obergrenzen, Verschachtelungstiefen-Beschränkungen und mehr festzulegen. Teile sie mit deinem Team." },
+    { "q": "Wie werden die Noten berechnet?", "a": "Die Noten basieren auf 5 Faktoren: Komplexität, Verschachtelungstiefe, State-Anzahl, Body Weight und Modifier-Anzahl. Die Skala reicht von A (exzellent) bis F (Verbesserung nötig), wobei C oder besser die empfohlene Grundlage ist." }
+  ],
+  "footer_privacy": "Datenschutzerklärung",
+  "footer_contact": "Kontakt",
+  "copyright": "© 2026 Canopy. All rights reserved."
+}

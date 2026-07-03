@@ -1,0 +1,20 @@
+{
+  "title": "Canopy — Datenschutzerklärung",
+  "h1": "Datenschutzerklärung",
+  "lede": "Wie Canopy mit deiner Privatsphäre und deinen Daten umgeht",
+  "updated": "Zuletzt aktualisiert: 22. März 2026",
+  "summary_h2": "Kurz gefasst",
+  "summary": "Canopy sammelt keinerlei Nutzerdaten. Die gesamte Verarbeitung läuft lokal auf deinem Mac.",
+  "details_h2": "Vollständige Richtlinie",
+  "cards": [
+    { "emoji": "📊", "h": "Datenerfassung", "p": "Canopy sammelt keine persönlichen Informationen, Nutzungsdaten oder Analytics. Es findet keinerlei Tracking statt." },
+    { "emoji": "🌐", "h": "Netzwerkkommunikation", "p": "Canopy stellt keine Verbindung zum Internet her. Die gesamte Verarbeitung läuft vollständig auf deinem Mac." },
+    { "emoji": "📁", "h": "Dateizugriff", "p": "Canopy greift schreibgeschützt auf Dateien in deinem ausgewählten SwiftUI-Projektordner zu. Dateiinhalte werden niemals nach außen gesendet oder in irgendeiner Weise verändert." },
+    { "emoji": "🤝", "h": "Weitergabe an Dritte", "p": "Es werden niemals Daten, einschließlich personenbezogener Informationen, an Dritte weitergegeben." }
+  ],
+  "contact_h2": "Fragen",
+  "contact_p": "Bei Fragen zu dieser Richtlinie wende dich bitte an",
+  "footer_support": "Support",
+  "footer_contact": "Kontakt",
+  "copyright": "© 2026 Canopy. All rights reserved."
+}

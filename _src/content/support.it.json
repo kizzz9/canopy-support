@@ -1,0 +1,30 @@
+{
+  "title": "Canopy — Assistenza",
+  "h1": "Assistenza Canopy",
+  "lede": "Hai bisogno di aiuto? Qui puoi trovare le risposte e contattarci.",
+  "guide_h2": "Guida utente",
+  "guide_sub": "Una guida completa alle funzionalità di Canopy e a come usarle",
+  "guide_card_h": "Leggi la guida utente",
+  "guide_card_p": "Sei nuovo di Canopy? Inizia da qui. Copre tutte le funzionalità, le operazioni sui pannelli, le scorciatoie da tastiera, i formati di esportazione e l'uso della CLI.",
+  "guide_btn": "Apri la guida",
+  "contact_h2": "Contattaci",
+  "contact_sub": "Segnalazioni di bug, richieste di funzionalità e domande",
+  "contact_cards": [
+    { "emoji": "🐛", "h": "Segnalazioni di bug", "p": "Hai trovato un bug? Includi i passaggi per riprodurre il problema." },
+    { "emoji": "💡", "h": "Richieste di funzionalità", "p": "Hai un'idea per una nuova funzionalità? Ci farebbe piacere conoscerla." },
+    { "emoji": "❓", "h": "Domande", "p": "Domande sull'uso o sulle specifiche? Non esitare a chiedere." }
+  ],
+  "faq_h2": "Domande frequenti",
+  "faq_sub": "Domande comuni prima e dopo l'acquisto",
+  "faq": [
+    { "q": "Canopy modifica il codice del mio progetto?", "a": "No. Canopy è completamente di sola lettura. Non modifica, elimina o scrive mai nei tuoi file." },
+    { "q": "È necessaria una connessione internet?", "a": "No. Tutta l'analisi viene eseguita localmente sul tuo Mac. Nessun dato viene mai inviato all'esterno." },
+    { "q": "Quali sono i requisiti di sistema?", "a": "È richiesto macOS 15.0 (Sequoia) o versioni successive. Sono supportati sia i Mac Apple Silicon che quelli Intel." },
+    { "q": "Che tipo di progetti sono supportati?", "a": "Canopy analizza i progetti Swift che utilizzano SwiftUI. Il codice UIKit e Objective-C non viene analizzato." },
+    { "q": "Posso impostare regole personalizzate?", "a": "Sì. Inserisci un file .canopy-rules.json o .canopy-rules.yml nella root del progetto per definire convenzioni di denominazione, limiti di State, restrizioni sulla profondità di annidamento e altro ancora. Condividile con il tuo team." },
+    { "q": "Come vengono calcolati i voti?", "a": "I voti si basano su 5 fattori: complessità, profondità di annidamento, numero di State, Body Weight e numero di modifier. La scala va da A (eccellente) a F (da migliorare), con C o superiore come base consigliata." }
+  ],
+  "footer_privacy": "Informativa sulla privacy",
+  "footer_contact": "Contatti",
+  "copyright": "© 2026 Canopy. All rights reserved."
+}

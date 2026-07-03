@@ -1,0 +1,20 @@
+{
+  "title": "Canopy — Informativa sulla privacy",
+  "h1": "Informativa sulla privacy",
+  "lede": "Come Canopy gestisce la tua privacy e i tuoi dati",
+  "updated": "Ultimo aggiornamento: 22 marzo 2026",
+  "summary_h2": "In breve",
+  "summary": "Canopy non raccoglie alcun dato dell'utente. Tutta l'elaborazione viene eseguita localmente sul tuo Mac.",
+  "details_h2": "Informativa completa",
+  "cards": [
+    { "emoji": "📊", "h": "Raccolta dei dati", "p": "Canopy non raccoglie alcuna informazione personale, dato di utilizzo o dato analitico. Non viene effettuato alcun tipo di tracciamento." },
+    { "emoji": "🌐", "h": "Comunicazione di rete", "p": "Canopy non si connette a internet. Tutta l'elaborazione viene eseguita interamente sul tuo Mac." },
+    { "emoji": "📁", "h": "Accesso ai file", "p": "Canopy accede ai file nella cartella del progetto SwiftUI selezionata in modalità di sola lettura. Il contenuto dei file non viene mai inviato all'esterno né modificato in alcun modo." },
+    { "emoji": "🤝", "h": "Condivisione con terze parti", "p": "Nessun dato, incluse le informazioni personali, viene mai condiviso con terze parti." }
+  ],
+  "contact_h2": "Domande",
+  "contact_p": "Per domande su questa informativa, contattaci tramite",
+  "footer_support": "Assistenza",
+  "footer_contact": "Contatti",
+  "copyright": "© 2026 Canopy. All rights reserved."
+}

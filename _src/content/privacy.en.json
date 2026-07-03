@@ -1,0 +1,20 @@
+{
+  "title": "Canopy — Privacy Policy",
+  "h1": "Privacy Policy",
+  "lede": "How Canopy handles your privacy and data",
+  "updated": "Last updated: March 22, 2026",
+  "summary_h2": "In a Nutshell",
+  "summary": "Canopy does not collect any user data. All processing runs locally on your Mac.",
+  "details_h2": "Full Policy",
+  "cards": [
+    { "emoji": "📊", "h": "Data Collection", "p": "Canopy does not collect any personal information, usage data, or analytics. There is no tracking of any kind." },
+    { "emoji": "🌐", "h": "Network Communication", "p": "Canopy does not connect to the internet. All processing runs entirely on your Mac." },
+    { "emoji": "📁", "h": "File Access", "p": "Canopy accesses files in your selected SwiftUI project folder in read-only mode. File contents are never sent externally or modified in any way." },
+    { "emoji": "🤝", "h": "Third-Party Sharing", "p": "No data, including personal information, is ever shared with third parties." }
+  ],
+  "contact_h2": "Questions",
+  "contact_p": "For questions about this policy, please reach out via",
+  "footer_support": "Support",
+  "footer_contact": "Contact",
+  "copyright": "© 2026 Canopy. All rights reserved."
+}

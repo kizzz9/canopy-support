@@ -1,0 +1,103 @@
+{
+  "title": "Canopy — User Guide",
+  "h1": "Canopy User Guide",
+  "lede": "A macOS development tool for visualizing and analyzing SwiftUI View hierarchies",
+  "pill_readonly": "Read-only",
+  "pill_offline": "Fully Offline",
+  "toc": [
+    ["start", "Getting Started"], ["features", "Features"], ["panels", "Panels"], ["legend", "Legend"],
+    ["shortcuts", "Shortcuts"], ["export", "Export"], ["cli", "CLI"]
+  ],
+  "start_h2": "Getting Started",
+  "start_sub": "Analyze your SwiftUI project in 3 simple steps",
+  "steps": [
+    { "h": "Open a Folder", "p": "Press <kbd>⌘ O</kbd> to select your project folder. Canopy automatically detects .swift files and begins AST analysis." },
+    { "h": "Explore the View Tree", "p": "The left panel shows your file list, the center displays the View tree. Click a node to see its source code highlighted in the right panel." },
+    { "h": "Analyze Quality", "p": "The bottom panel shows quality scores, dependency graphs, and statistics. Click a grade badge to see the complexity breakdown." }
+  ],
+  "start_tip": "Canopy is read-only. It never modifies or deletes any of your project's code. Use it with confidence.",
+  "features_h2": "Key Features",
+  "features_sub": "Inspection capabilities provided by Canopy",
+  "features": [
+    { "emoji": "🌲", "h": "View Tree Display", "p": "Visualize SwiftUI View hierarchies as a tree structure. Detects nested Views, @ViewBuilder, and View functions in extensions." },
+    { "emoji": "📊", "h": "Quality Analysis", "p": "Assigns A through F grades to each View. Evaluates complexity, nesting depth, State count, body weight, and modifier order." },
+    { "emoji": "🔗", "h": "Dependency Graph", "p": "Visualize dependencies between Views. Detect circular references, find isolated Views, and trace State-to-Binding flow." },
+    { "emoji": "🔍", "h": "State Audit", "p": "Detects @State, @Binding, @Environment, and @Observable properties. Warns about missing private modifiers and excessive State usage." },
+    { "emoji": "🎨", "h": "Syntax Highlighting", "p": "Color-coded Swift code display. Highlights lines corresponding to View nodes. Click code to reverse-lookup in the tree." },
+    { "emoji": "🔨", "h": "Xcode Integration", "p": "Click the hammer icon to open the corresponding line directly in Xcode (via xed --line)." },
+    { "emoji": "📐", "h": "Architecture Rules", "p": "Define custom rules with .canopy-rules.json. Share naming conventions, State limits, and nesting depth restrictions across your team." },
+    { "emoji": "🧩", "h": "Plugins", "p": "Add custom rules, exporters, and analyzers as plugins. Browse and install from the plugin catalog." }
+  ],
+  "panels_h2": "Panel Layout",
+  "panels_sub": "3 panes + bottom panel layout",
+  "panels": [
+    { "emoji": "📁", "h": "Left: File List", "p": "List of analyzed Swift files. Each file shows a grade badge. Click to select." },
+    { "emoji": "🌿", "h": "Center: View Tree", "p": "View hierarchy structure. Shows breadcrumbs, Peek Body (body preview), and Code Vision metrics." },
+    { "emoji": "📝", "h": "Right: Source Code", "p": "Line-numbered code display. Drag line numbers to select ranges, then copy with ⌘C. Click code to reverse-lookup in the tree." },
+    { "emoji": "📈", "h": "Bottom: Analysis Panel", "p": "Three tabs: Quality, Dependencies, Statistics. Resizable and collapsible. Click grade badges for detail popovers." }
+  ],
+  "legend_h2": "Icons & Badges",
+  "legend_sub": "Meaning of each element shown in the tree and file list",
+  "legend_dots_h": "Node Icon Colors",
+  "legend_dots": [
+    { "color": "blue", "k": "Blue", "v": "Layout — VStack / HStack / ZStack" },
+    { "color": "green", "k": "Green", "v": "Interaction — Button / Toggle / Picker" },
+    { "color": "purple", "k": "Purple", "v": "Media — Image" },
+    { "color": "orange", "k": "Orange", "v": "Navigation — NavigationStack / TabView" },
+    { "color": "cyan", "k": "Cyan", "v": "Lists — List / ForEach / ScrollView" },
+    { "color": "yellow", "k": "Yellow", "v": "Conditional — if / switch" },
+    { "color": "gray", "k": "Gray", "v": "Separators — Divider / Spacer" }
+  ],
+  "legend_badges_h": "Badges & Markers",
+  "legend_badges": [
+    { "k": "[H] [V] [Z] [S] [L] [F] [G]", "v": "Layout badges — HStack / VStack / ZStack / ScrollView / List / Form / Grid" },
+    { "k": "3", "v": "Modifier count badge — number of .modifiers on the node" },
+    { "k": "👁", "v": "Peek Body — right-click to expand body preview" },
+    { "k": "L42", "v": "Line number — position in source code" },
+    { "k": "NOW", "v": "Updated within 1 hour (shown in file list)" },
+    { "k": "TODAY", "v": "Updated within 24 hours (shown in file list)" },
+    { "k": "A–F", "v": "Grade badge — click to view complexity breakdown" }
+  ],
+  "keys_h2": "Keyboard Shortcuts",
+  "keys_sub": "Quick access to common operations",
+  "keys": [
+    { "label": "Open Folder", "keys": ["⌘ O"] },
+    { "label": "Reload", "keys": ["⌘ R"] },
+    { "label": "Quick Open", "keys": ["⌘ P"] },
+    { "label": "Find in File", "keys": ["⌘ F"] },
+    { "label": "Search All Files", "keys": ["⇧ ⌘ F"] },
+    { "label": "Go to Line", "keys": ["⌘ L"] },
+    { "label": "Quality Panel", "keys": ["⇧ ⌘ I"] },
+    { "label": "Dependencies Panel", "keys": ["⇧ ⌘ G"] },
+    { "label": "Expand All", "keys": ["⇧ ⌘ E"] },
+    { "label": "Collapse All", "keys": ["⇧ ⌘ W"] },
+    { "label": "Increase Font Size", "keys": ["⌘ +"] },
+    { "label": "Decrease Font Size", "keys": ["⌘ −"] },
+    { "label": "Help", "keys": ["⌘ /"] },
+    { "label": "Reset Font Size", "keys": ["⌘ 0"] }
+  ],
+  "export_h2": "Export",
+  "export_sub": "Output analysis results in various formats",
+  "exports": [
+    { "emoji": "🌐", "h": "HTML Report", "p": "Share as static HTML" },
+    { "emoji": "⚡", "h": "Interactive HTML", "p": "With interactive tree" },
+    { "emoji": "📄", "h": "Markdown", "p": "For documentation" },
+    { "emoji": "📋", "h": "JSON", "p": "For programmatic use" },
+    { "emoji": "🧜", "h": "Mermaid", "p": "Dependency diagrams" },
+    { "emoji": "🌱", "h": "PlantUML", "p": "Class diagrams" },
+    { "emoji": "🔵", "h": "DOT (Graphviz)", "p": "Graph rendering" },
+    { "emoji": "📊", "h": "CSV", "p": "Warning reports" }
+  ],
+  "export_tip": "Access all export formats from the menu bar under \"Project → Export\".",
+  "cli_h2": "Command Line",
+  "cli_sub": "Headless execution for CI/CD pipeline integration",
+  "cli_c1": "Output analysis results in JSON format",
+  "cli_c2": "SARIF format (for GitHub Code Scanning)",
+  "cli_c3": "Display JSON Schema",
+  "cli_setup": "Before using the CLI, open the project folder in Canopy (GUI) once. Access permissions are saved, and you can analyze from the CLI from then on.",
+  "cli_ci": "Upload SARIF output to GitHub Actions to display quality warnings inline on pull requests.",
+  "footer_support": "Support",
+  "footer_privacy": "Privacy Policy",
+  "footer_contact": "Contact",
+  "copyright": "© 2026 Canopy. All rights reserved."
+}
