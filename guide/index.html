@@ -37,14 +37,14 @@ body {
 a { color: var(--accent); }
 .container { max-width: 920px; margin: 0 auto; padding: 0 24px; }
 
-/* ─ Hero: アプリと同じ「森の中の発光」世界観 ─ */
+/* ─ Hero: 左=メッセージ / 右=View ツリーパネル（プロダクトを住まわせる） ─ */
 .hero {
   background:
-    radial-gradient(ellipse 70% 90% at 70% -10%, rgba(91,228,155,.13), transparent),
-    radial-gradient(ellipse 50% 60% at 20% 110%, rgba(91,228,155,.07), transparent),
+    radial-gradient(ellipse 70% 90% at 75% -10%, rgba(91,228,155,.16), transparent),
+    radial-gradient(ellipse 50% 60% at 10% 110%, rgba(91,228,155,.07), transparent),
     linear-gradient(160deg, var(--hero-from), var(--hero-to));
   color: var(--hero-ink); position: relative; overflow: hidden;
-  padding: 72px 24px 64px; text-align: center;
+  padding: 84px 24px 72px;
 }
 .hero::before {
   content: ""; position: absolute; inset: 0; pointer-events: none;
@@ -52,22 +52,64 @@ a { color: var(--accent); }
     linear-gradient(rgba(91,228,155,.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(91,228,155,.05) 1px, transparent 1px);
   background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse 80% 90% at 50% 0%, #000 30%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 90% at 50% 0%, #000 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse 90% 100% at 60% 0%, #000 30%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 100% at 60% 0%, #000 30%, transparent 78%);
 }
 .hero > * { position: relative; }
-.hero img.icon {
-  width: 96px; height: 96px; border-radius: 22px;
-  box-shadow: 0 18px 50px rgba(91,228,155,.28), 0 4px 14px rgba(0,0,0,.4);
-  margin-bottom: 20px;
+.hero-grid {
+  max-width: 1060px; margin: 0 auto; display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+  gap: 56px; align-items: center;
 }
-.hero h1 { font-size: 2.3em; font-weight: 800; letter-spacing: -.02em; margin-bottom: 10px; text-wrap: balance; }
-.hero p.lede { font-size: 1.1em; color: var(--hero-muted); max-width: 560px; margin: 0 auto 18px; }
-.meta-pills { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.hero-brand { display: flex; align-items: center; gap: 14px; margin-bottom: 26px; }
+.hero-brand img { width: 56px; height: 56px; border-radius: 14px; box-shadow: 0 10px 30px rgba(91,228,155,.3); }
+.hero-brand .wordmark { font-weight: 800; font-size: 1.3em; letter-spacing: -.01em; }
+.hero-brand .page-tag {
+  font-family: var(--mono); font-size: .68em; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--hero-accent); border: 1px solid rgba(91,228,155,.4); border-radius: 999px; padding: 3px 12px;
+}
+.hero h1 { font-size: 2.7em; font-weight: 800; letter-spacing: -.025em; line-height: 1.2; margin-bottom: 16px; text-wrap: balance; }
+.hero p.lede { font-size: 1.08em; color: var(--hero-muted); margin-bottom: 22px; max-width: 34em; }
+.meta-pills { display: flex; gap: 10px; flex-wrap: wrap; }
 .meta-pills span {
   font-family: var(--mono); font-size: .75em; letter-spacing: .04em;
   color: var(--hero-accent); border: 1px solid rgba(91,228,155,.35);
   border-radius: 999px; padding: 4px 14px; background: rgba(91,228,155,.08);
+}
+
+/* View ツリーパネル（アプリの中央ペインを CSS で再現） */
+.treecard {
+  background: #0E211613; background: rgba(7, 18, 12, .72);
+  border: 1px solid rgba(91,228,155,.28); border-radius: 14px;
+  box-shadow: 0 34px 90px rgba(0,0,0,.5), 0 0 70px rgba(91,228,155,.12);
+  font-family: var(--mono); font-size: 13px; overflow: hidden;
+  backdrop-filter: blur(4px);
+}
+.treecard .bar {
+  display: flex; align-items: center; gap: 8px;
+  padding: 11px 14px; border-bottom: 1px solid rgba(91,228,155,.18);
+  color: #9CC2A6; font-size: .85em; letter-spacing: .06em;
+}
+.treecard .bar i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+.treecard .rows { padding: 12px 16px 16px; line-height: 2.05; white-space: nowrap; overflow-x: auto; }
+.treecard .row { display: flex; align-items: center; gap: 8px; color: #D7EEDD; }
+.treecard .row .guide { color: #3E5C49; }
+.treecard .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.treecard .mod { color: #6E8F7A; font-size: .85em; }
+.treecard .badge {
+  font-size: .72em; font-weight: 700; border-radius: 5px; padding: 1px 7px; line-height: 1.6;
+}
+.treecard .bA { background: #2F9E63; color: #06130C; }
+.treecard .bC { background: #C9A83C; color: #131006; }
+.treecard .bF { background: #D9544A; color: #FFF; }
+.treecard .row.hot { background: rgba(217,84,74,.12); border-radius: 6px; margin: 0 -8px; padding: 0 8px; }
+.treecard .foot {
+  border-top: 1px solid rgba(91,228,155,.18); padding: 10px 16px;
+  color: #5BE49B; font-size: .82em; letter-spacing: .04em;
+}
+@media (max-width: 880px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+  .hero h1 { font-size: 2em; }
 }
 
 /* 言語スイッチャー */
@@ -182,7 +224,7 @@ footer a { text-decoration: none; font-weight: 500; }
 footer a:hover { text-decoration: underline; }
 
 /* ガイド目次 */
-.toc { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 22px; }
+.toc { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
 .toc a {
   font-family: var(--mono); font-size: .78em; color: var(--hero-muted); text-decoration: none;
   border: 1px solid rgba(91,228,155,.25); border-radius: 999px; padding: 5px 14px;
@@ -194,11 +236,28 @@ footer a:hover { text-decoration: underline; }
 <body>
 <header class="hero">
 <div class="langs"><b>日本語</b><a href="../en/">English</a><a href="../fr/">Français</a><a href="../de/">Deutsch</a><a href="../es/">Español</a><a href="../it/">Italiano</a></div>
-<img class="icon" src="../icon.png" alt="Canopy">
-<h1>Canopy 使い方ガイド</h1>
-<p class="lede">SwiftUI プロジェクトの View 階層を可視化・分析する macOS 開発ツール</p>
-<div class="meta-pills"><span>macOS 15.0+</span><span>読み取り専用</span><span>完全オフライン</span></div>
+<div class="hero-grid">
+<div>
+  <div class="hero-brand"><img src="../icon.png" alt="Canopy"><span class="wordmark">Canopy</span><span class="page-tag">User Guide</span></div>
+  <h1>Canopy 使い方ガイド</h1>
+  <p class="lede">SwiftUI プロジェクトの View 階層を可視化・分析する macOS 開発ツール</p>
+  <div class="meta-pills"><span>macOS 15.0+</span><span>読み取り専用</span><span>完全オフライン</span></div>
 <nav class="toc"><a href="#start">はじめに</a><a href="#features">機能一覧</a><a href="#panels">パネル操作</a><a href="#legend">凡例</a><a href="#shortcuts">ショートカット</a><a href="#export">エクスポート</a><a href="#cli">CLI</a></nav>
+</div>
+<div class="treecard" aria-hidden="true">
+<div class="bar"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i>&nbsp;View Tree — MyApp</div>
+<div class="rows">
+<div class="row"><span class="dot" style="background:#54A0FF"></span>ContentView <span class="mod">body</span><span class="badge bA">A</span></div>
+<div class="row"><span class="guide">├</span><span class="dot" style="background:#FFA45B"></span>NavigationStack <span class="mod">.navigationTitle</span></div>
+<div class="row hot"><span class="guide">│&nbsp;&nbsp;├</span><span class="dot" style="background:#54A0FF"></span>SettingsView <span class="mod">81 nodes · depth 6</span><span class="badge bF">F</span></div>
+<div class="row"><span class="guide">│&nbsp;&nbsp;│&nbsp;&nbsp;├</span><span class="dot" style="background:#48D8E0"></span>Form <span class="mod">×6 Section</span></div>
+<div class="row"><span class="guide">│&nbsp;&nbsp;│&nbsp;&nbsp;└</span><span class="dot" style="background:#5BE49B"></span>Toggle <span class="mod">×12 · @State 11</span></div>
+<div class="row"><span class="guide">│&nbsp;&nbsp;└</span><span class="dot" style="background:#54A0FF"></span>DashboardView <span class="mod">14 nodes</span><span class="badge bA">A</span></div>
+<div class="row"><span class="guide">└</span><span class="dot" style="background:#54A0FF"></span>DetailView <span class="mod">22 nodes</span><span class="badge bC">C</span></div>
+</div>
+<div class="foot">✓ 151 files parsed · 1 file needs splitting</div>
+</div>
+</div>
 </header>
 <main class="container">
 <section class="section" id="start">
