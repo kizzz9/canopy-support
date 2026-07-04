@@ -217,6 +217,63 @@ pre.term {
 pre.term .c { color: #6E8F7A; }
 pre.term .p { color: #5BE49B; user-select: none; }
 
+/* ガイド誘導カード（中身のプレビュー付き） */
+.cta .chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 2px 0 16px; }
+.cta .chips span {
+  font-family: var(--mono); font-size: .72em; letter-spacing: .05em;
+  color: var(--hero-accent); border: 1px solid rgba(91,228,155,.3);
+  border-radius: 6px; padding: 3px 10px; background: rgba(91,228,155,.06);
+}
+
+/* お問い合わせカード: 用途別カラーストライプ + mono タグ */
+.card { position: relative; overflow: hidden; }
+.card .tag {
+  display: inline-block; font-family: var(--mono); font-size: .68em; font-weight: 700;
+  letter-spacing: .12em; border-radius: 6px; padding: 3px 10px; margin-bottom: 14px;
+}
+.card.t-bug::before, .card.t-idea::before, .card.t-q::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+}
+.card.t-bug::before { background: #D9544A; }
+.card.t-bug .tag { background: rgba(217,84,74,.14); color: #E0766D; }
+.card.t-idea::before { background: var(--accent); }
+.card.t-idea .tag { background: var(--accent-soft); color: var(--accent); }
+.card.t-q::before { background: #48A8D8; }
+.card.t-q .tag { background: rgba(72,168,216,.14); color: #5FB6E0; }
+
+/* FAQ 採番 */
+summary .qn { font-family: var(--mono); font-size: .8em; color: var(--accent); font-weight: 600; min-width: 34px; }
+
+/* プライバシー監査カード（Canopy 風セルフオーディット） */
+.audit {
+  display: grid; grid-template-columns: 170px 1fr; gap: 34px; align-items: center;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 34px;
+}
+.audit .ringwrap { text-align: center; }
+.audit .ring {
+  width: 140px; height: 140px; border-radius: 50%; margin: 0 auto 12px;
+  background: conic-gradient(var(--accent) 0turn 1turn);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 44px var(--glow);
+}
+.audit .ring .inner {
+  width: 116px; height: 116px; border-radius: 50%; background: var(--surface);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.audit .ring .grade { font-weight: 900; font-size: 44px; color: var(--accent); line-height: 1; }
+.audit .ring .score { font-family: var(--mono); font-size: .72em; color: var(--muted); margin-top: 4px; }
+.audit .ringwrap .label { font-family: var(--mono); font-size: .7em; letter-spacing: .14em; color: var(--muted); text-transform: uppercase; }
+.audit .crow { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.audit .crow:last-child { border-bottom: none; }
+.audit .st {
+  font-family: var(--mono); font-size: .7em; font-weight: 700; letter-spacing: .08em;
+  color: var(--accent); background: var(--accent-soft); border-radius: 6px;
+  padding: 3px 0; text-align: center;
+}
+.audit .crow h3 { font-size: .98em; font-weight: 700; margin-bottom: 2px; }
+.audit .crow p { color: var(--muted); font-size: .88em; margin: 0; }
+@media (max-width: 720px) { .audit { grid-template-columns: 1fr; } }
+
 /* フッター */
 footer { border-top: 1px solid var(--line); padding: 34px 24px; text-align: center; color: var(--muted); font-size: .85em; }
 footer nav { margin-bottom: 8px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
@@ -264,11 +321,11 @@ footer a:hover { text-decoration: underline; }
 <h2>User Guide</h2>
 <p class="sub">A comprehensive guide to Canopy's features and how to use them</p>
 <div class="cta">
-  <span class="emoji">📖</span>
   <div>
     <h3>Read the User Guide</h3>
     <p>New to Canopy? Start here. Covers all features, panel operations, keyboard shortcuts, export formats, and CLI usage.</p>
-    <a class="btn" href="../guide/en/">Open Guide</a>
+    <div class="chips"><span>Getting Started</span><span>Features</span><span>⌘ Shortcuts</span><span>Export</span><span>CLI / CI</span></div>
+    <a class="btn" href="../guide/en/">Open Guide →</a>
   </div>
 </div>
 </section>
@@ -277,11 +334,11 @@ footer a:hover { text-decoration: underline; }
 <h2>Get in Touch</h2>
 <p class="sub">Bug reports, feature requests, and questions</p>
 <div class="grid">
-<div class="card"><span class="emoji">🐛</span><h3>Bug Reports</h3>
+<div class="card t-bug"><span class="tag">BUG REPORT</span><h3>Bug Reports</h3>
 <p>Found a bug? Please include steps to reproduce the issue.<br><a href="https://github.com/kizzz9/Canopy/issues" target="_blank" rel="noopener">GitHub Issues →</a></p></div>
-<div class="card"><span class="emoji">💡</span><h3>Feature Requests</h3>
+<div class="card t-idea"><span class="tag">FEATURE</span><h3>Feature Requests</h3>
 <p>Have an idea for a new feature? We'd love to hear it.<br><a href="https://github.com/kizzz9/Canopy/issues" target="_blank" rel="noopener">GitHub Issues →</a></p></div>
-<div class="card"><span class="emoji">❓</span><h3>Questions</h3>
+<div class="card t-q"><span class="tag">QUESTION</span><h3>Questions</h3>
 <p>Questions about usage or specifications? Don't hesitate to ask.<br><a href="https://github.com/kizzz9/Canopy/issues" target="_blank" rel="noopener">GitHub Issues →</a></p></div>
 </div>
 </section>
@@ -289,12 +346,12 @@ footer a:hover { text-decoration: underline; }
 <span class="eyebrow">FAQ</span>
 <h2>Frequently Asked Questions</h2>
 <p class="sub">Common questions before and after purchase</p>
-<details><summary>Does Canopy modify my project's code?</summary><div class="a">No. Canopy is completely read-only. It never modifies, deletes, or writes to your files.</div></details>
-<details><summary>Does it require an internet connection?</summary><div class="a">No. All analysis runs locally on your Mac. No data is ever sent externally.</div></details>
-<details><summary>What are the system requirements?</summary><div class="a">macOS 15.0 (Sequoia) or later is required. Both Apple Silicon and Intel Macs are supported.</div></details>
-<details><summary>What types of projects are supported?</summary><div class="a">Canopy analyzes Swift projects that use SwiftUI. UIKit and Objective-C code are not analyzed.</div></details>
-<details><summary>Can I set custom rules?</summary><div class="a">Yes. Place a .canopy-rules.json or .canopy-rules.yml file at your project root to define naming conventions, State limits, nesting depth restrictions, and more. Share them across your team.</div></details>
-<details><summary>How are grades calculated?</summary><div class="a">Grades are based on 5 factors: complexity, nesting depth, State count, body weight, and modifier count. The scale runs from A (excellent) to F (needs improvement), with C or above being the recommended baseline.</div></details>
+<details><summary><span class="qn">Q01</span>Does Canopy modify my project's code?</summary><div class="a">No. Canopy is completely read-only. It never modifies, deletes, or writes to your files.</div></details>
+<details><summary><span class="qn">Q02</span>Does it require an internet connection?</summary><div class="a">No. All analysis runs locally on your Mac. No data is ever sent externally.</div></details>
+<details><summary><span class="qn">Q03</span>What are the system requirements?</summary><div class="a">macOS 15.0 (Sequoia) or later is required. Both Apple Silicon and Intel Macs are supported.</div></details>
+<details><summary><span class="qn">Q04</span>What types of projects are supported?</summary><div class="a">Canopy analyzes Swift projects that use SwiftUI. UIKit and Objective-C code are not analyzed.</div></details>
+<details><summary><span class="qn">Q05</span>Can I set custom rules?</summary><div class="a">Yes. Place a .canopy-rules.json or .canopy-rules.yml file at your project root to define naming conventions, State limits, nesting depth restrictions, and more. Share them across your team.</div></details>
+<details><summary><span class="qn">Q06</span>How are grades calculated?</summary><div class="a">Grades are based on 5 factors: complexity, nesting depth, State count, body weight, and modifier count. The scale runs from A (excellent) to F (needs improvement), with C or above being the recommended baseline.</div></details>
 </section>
 </main>
 <footer><nav><a href="https://kizzz9.github.io/canopy-privacy-policy/en/">Privacy Policy</a><a href="https://github.com/kizzz9/Canopy/issues">Contact</a></nav><div>© 2026 Canopy. All rights reserved.</div></footer></body></html>
