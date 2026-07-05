@@ -288,6 +288,30 @@ footer a:hover { text-decoration: underline; }
 }
 .toc a:hover { color: var(--hero-ink); border-color: rgba(91,228,155,.6); }
 @media (max-width: 640px) { .hero h1 { font-size: 1.8em; } .langs { position: static; justify-content: center; margin-bottom: 18px; } }
+
+/* お問い合わせフォーム */
+.form-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 26px; }
+.field { margin-bottom: 15px; }
+.field label { display: block; font-size: .82em; font-weight: 600; color: var(--muted); margin-bottom: 6px; }
+.field .req { color: var(--accent); margin-left: 8px; font-size: .72em; font-family: var(--mono); letter-spacing: .06em; }
+.field input, .field textarea {
+  width: 100%; background: var(--bg); border: 1px solid var(--line);
+  border-radius: 9px; padding: 11px 13px; font: inherit; font-size: .95em; color: var(--ink);
+}
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--glow); }
+.field textarea { min-height: 150px; resize: vertical; }
+.hp { position: absolute; left: -5000px; width: 1px; height: 1px; opacity: 0; }
+.submit {
+  display: inline-block; background: var(--accent); color: var(--surface);
+  border: none; border-radius: 10px; padding: 12px 30px;
+  font: inherit; font-size: .95em; font-weight: 700; cursor: pointer; transition: filter .15s;
+}
+.submit:hover { filter: brightness(1.08); }
+.submit:disabled { opacity: .55; cursor: default; }
+.form-status { display: inline-block; margin-left: 14px; font-size: .9em; color: var(--accent); }
+.form-status.err { color: #D9544A; }
+.form-note { margin-top: 16px; font-size: .88em; color: var(--muted); }
+.cf-turnstile { margin-top: 4px; }
 </style>
 </head>
 <body>
@@ -432,4 +456,4 @@ footer a:hover { text-decoration: underline; }
 <div class="tip"><b>CI</b>Téléversez la sortie SARIF vers GitHub Actions pour afficher les avertissements de qualité directement dans les pull requests.</div>
 </section>
 </main>
-<footer><nav><a href="https://kizzz9.github.io/canopy-support/fr/">Support</a><a href="https://kizzz9.github.io/canopy-privacy-policy/fr/">Politique de confidentialité</a><a href="https://github.com/kizzz9/Canopy/issues">Contact</a></nav><div>© 2026 Canopy. All rights reserved.</div></footer></body></html>
+<footer><nav><a href="https://kizzz9.github.io/canopy-support/fr/">Support</a><a href="https://kizzz9.github.io/canopy-privacy-policy/fr/">Politique de confidentialité</a><a href="https://kizzz9.github.io/canopy-support/fr/#contact">Contact</a></nav><div>© 2026 Canopy. All rights reserved.</div></footer></body></html>

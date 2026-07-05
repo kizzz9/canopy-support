@@ -19,6 +19,12 @@ LANG_LABELS = {"ja": "日本語", "en": "English", "fr": "Français", "de": "Deu
 SUPPORT_BASE = "https://kizzz9.github.io/canopy-support"
 PRIVACY_BASE = "https://kizzz9.github.io/canopy-privacy-policy"
 
+# お問い合わせフォーム（Cloudflare Worker + Resend）。worker/ 配下にバックエンド。
+CONTACT_ENDPOINT = "https://canopy-contact.nsmtkz9.workers.dev"
+# Turnstile ウィジェットの Site Key（kizzz9.github.io ドメイン向け・Tabilm と共用）。
+# 空文字にすると widget を出さず、ハニーポット + Origin チェックのみで運用する。
+TURNSTILE_SITEKEY = "0x4AAAAAADv-5iOVlinTmIvp"
+
 CSS = """
 :root {
   --bg: #F7FAF7; --surface: #FFFFFF; --line: #DCE7DE; --ink: #14261B;
@@ -295,6 +301,30 @@ footer a:hover { text-decoration: underline; }
 }
 .toc a:hover { color: var(--hero-ink); border-color: rgba(91,228,155,.6); }
 @media (max-width: 640px) { .hero h1 { font-size: 1.8em; } .langs { position: static; justify-content: center; margin-bottom: 18px; } }
+
+/* お問い合わせフォーム */
+.form-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 26px; }
+.field { margin-bottom: 15px; }
+.field label { display: block; font-size: .82em; font-weight: 600; color: var(--muted); margin-bottom: 6px; }
+.field .req { color: var(--accent); margin-left: 8px; font-size: .72em; font-family: var(--mono); letter-spacing: .06em; }
+.field input, .field textarea {
+  width: 100%; background: var(--bg); border: 1px solid var(--line);
+  border-radius: 9px; padding: 11px 13px; font: inherit; font-size: .95em; color: var(--ink);
+}
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--glow); }
+.field textarea { min-height: 150px; resize: vertical; }
+.hp { position: absolute; left: -5000px; width: 1px; height: 1px; opacity: 0; }
+.submit {
+  display: inline-block; background: var(--accent); color: var(--surface);
+  border: none; border-radius: 10px; padding: 12px 30px;
+  font: inherit; font-size: .95em; font-weight: 700; cursor: pointer; transition: filter .15s;
+}
+.submit:hover { filter: brightness(1.08); }
+.submit:disabled { opacity: .55; cursor: default; }
+.form-status { display: inline-block; margin-left: 14px; font-size: .9em; color: var(--accent); }
+.form-status.err { color: #D9544A; }
+.form-note { margin-top: 16px; font-size: .88em; color: var(--muted); }
+.cf-turnstile { margin-top: 4px; }
 """
 
 DOT_COLORS = {"red": "#FF6B6B", "blue": "#54A0FF", "green": "#5BE49B", "purple": "#B98AF5",
@@ -374,6 +404,84 @@ def footer_html(c, links):
     return f"<footer><nav>{nav}</nav><div>{esc(c['copyright'])}</div></footer></body></html>"
 
 
+def contact_form_html(lang, c):
+    """お問い合わせフォーム（Cloudflare Worker 受け口）。全ロケール共通の骨格 + JSON の form 文言。"""
+    f = c["form"]
+    turnstile_script = ""
+    turnstile_widget = ""
+    if TURNSTILE_SITEKEY:
+        turnstile_script = '<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>'
+        turnstile_widget = (
+            f'<div class="field"><div class="cf-turnstile" data-sitekey="{TURNSTILE_SITEKEY}" '
+            f'data-theme="auto" data-language="{lang}"></div></div>'
+        )
+    statuses = json.dumps({
+        "msg": f["st_message"], "turnstile": f["st_turnstile"],
+        "sending": f["st_sending"], "success": f["st_success"], "error": f["st_error"],
+    }, ensure_ascii=False)
+    return f"""{turnstile_script}
+<form class="form-card" id="contact-form">
+  <div class="field">
+    <label for="cf-name">{esc(f['name_label'])}</label>
+    <input id="cf-name" name="name" type="text" maxlength="100" autocomplete="name">
+  </div>
+  <div class="field">
+    <label for="cf-email">{esc(f['email_label'])}</label>
+    <input id="cf-email" name="email" type="email" maxlength="200" autocomplete="email">
+  </div>
+  <div class="field">
+    <label for="cf-message">{esc(f['message_label'])}<span class="req">{esc(f['required'])}</span></label>
+    <textarea id="cf-message" name="message" maxlength="5000" required></textarea>
+  </div>
+  <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+  {turnstile_widget}
+  <button type="submit" class="submit">{esc(f['submit'])}</button>
+  <span class="form-status" id="form-status" role="status"></span>
+  <p class="form-note">{esc(f['note'])}</p>
+</form>
+<script>
+(() => {{
+  const ENDPOINT = "{CONTACT_ENDPOINT}";
+  const S = {statuses};
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("form-status");
+  const button = form.querySelector(".submit");
+  form.addEventListener("submit", async (event) => {{
+    event.preventDefault();
+    const hasTurnstile = !!form.querySelector(".cf-turnstile");
+    const token = form.querySelector('[name="cf-turnstile-response"]')?.value ?? "";
+    const message = form.message.value.trim();
+    status.classList.remove("err");
+    if (!message) {{ status.textContent = S.msg; status.classList.add("err"); return; }}
+    if (hasTurnstile && !token) {{ status.textContent = S.turnstile; status.classList.add("err"); return; }}
+    button.disabled = true;
+    status.textContent = S.sending;
+    try {{
+      const res = await fetch(ENDPOINT, {{
+        method: "POST",
+        headers: {{ "Content-Type": "application/json" }},
+        body: JSON.stringify({{
+          name: form.name.value, email: form.email.value, message,
+          token, website: form.website.value,
+        }}),
+      }});
+      const body = await res.json();
+      if (!body.ok) throw new Error(body.error);
+      form.reset();
+      if (window.turnstile) turnstile.reset();
+      status.textContent = S.success;
+    }} catch {{
+      status.textContent = S.error;
+      status.classList.add("err");
+      if (window.turnstile) turnstile.reset();
+    }} finally {{
+      button.disabled = false;
+    }}
+  }});
+}})();
+</script>"""
+
+
 def build_support(lang, c):
     d = lang_dir(lang)
     depth = "../" if d else ""
@@ -394,19 +502,13 @@ def build_support(lang, c):
   </div>
 </div>
 </section>
-<section class="section">
+<section class="section" id="contact">
 <span class="eyebrow">Contact</span>
 <h2>{esc(c['contact_h2'])}</h2>
 <p class="sub">{esc(c['contact_sub'])}</p>
-<div class="grid">"""
-    contact_kinds = [("t-bug", "BUG REPORT"), ("t-idea", "FEATURE"), ("t-q", "QUESTION")]
-    for card, (cls, tag) in zip(c["contact_cards"], contact_kinds):
-        out += f"""
-<div class="card {cls}"><span class="tag">{tag}</span><h3>{esc(card['h'])}</h3>
-<p>{esc(card['p'])}<br><a href="https://github.com/kizzz9/Canopy/issues" target="_blank" rel="noopener">GitHub Issues →</a></p></div>"""
+{contact_form_html(lang, c)}
+</section>"""
     out += """
-</div>
-</section>
 <section class="section">
 <span class="eyebrow">FAQ</span>
 <h2>{h2}</h2>
@@ -418,7 +520,7 @@ def build_support(lang, c):
             f"<div class=\"a\">{esc(qa['a'])}</div></details>\n"
         )
     out += "</section>\n</main>\n"
-    out += footer_html(c, [(c["footer_privacy"], f"{PRIVACY_BASE}/{d}"), (c["footer_contact"], "https://github.com/kizzz9/Canopy/issues")])
+    out += footer_html(c, [(c["footer_privacy"], f"{PRIVACY_BASE}/{d}"), (c["footer_contact"], "#contact")])
     return out
 
 
@@ -529,7 +631,7 @@ def build_guide(lang, c):
 </section>
 </main>
 """
-    out += footer_html(c, [(c["footer_support"], f"{SUPPORT_BASE}/{d}"), (c["footer_privacy"], f"{PRIVACY_BASE}/{d}"), (c["footer_contact"], "https://github.com/kizzz9/Canopy/issues")])
+    out += footer_html(c, [(c["footer_support"], f"{SUPPORT_BASE}/{d}"), (c["footer_privacy"], f"{PRIVACY_BASE}/{d}"), (c["footer_contact"], f"{SUPPORT_BASE}/{d}#contact")])
     return out
 
 
@@ -564,11 +666,11 @@ def build_privacy(lang, c):
 <section class="section">
 <span class="eyebrow">Contact</span>
 <h2>{esc(c['contact_h2'])}</h2>
-<p class="sub">{esc(c['contact_p'])} <a href="https://github.com/kizzz9/Canopy/issues" target="_blank" rel="noopener">GitHub Issues</a></p>
+<p class="sub">{esc(c['contact_p'])} <a href="{SUPPORT_BASE}/{d}#contact">{esc(c['footer_contact'])}</a></p>
 </section>
 </main>
 """
-    out += footer_html(c, [(c["footer_support"], f"{SUPPORT_BASE}/{d}"), (c["footer_contact"], "https://github.com/kizzz9/Canopy/issues")])
+    out += footer_html(c, [(c["footer_support"], f"{SUPPORT_BASE}/{d}"), (c["footer_contact"], f"{SUPPORT_BASE}/{d}#contact")])
     return out
 
 

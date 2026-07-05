@@ -288,6 +288,30 @@ footer a:hover { text-decoration: underline; }
 }
 .toc a:hover { color: var(--hero-ink); border-color: rgba(91,228,155,.6); }
 @media (max-width: 640px) { .hero h1 { font-size: 1.8em; } .langs { position: static; justify-content: center; margin-bottom: 18px; } }
+
+/* お問い合わせフォーム */
+.form-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 26px; }
+.field { margin-bottom: 15px; }
+.field label { display: block; font-size: .82em; font-weight: 600; color: var(--muted); margin-bottom: 6px; }
+.field .req { color: var(--accent); margin-left: 8px; font-size: .72em; font-family: var(--mono); letter-spacing: .06em; }
+.field input, .field textarea {
+  width: 100%; background: var(--bg); border: 1px solid var(--line);
+  border-radius: 9px; padding: 11px 13px; font: inherit; font-size: .95em; color: var(--ink);
+}
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--glow); }
+.field textarea { min-height: 150px; resize: vertical; }
+.hp { position: absolute; left: -5000px; width: 1px; height: 1px; opacity: 0; }
+.submit {
+  display: inline-block; background: var(--accent); color: var(--surface);
+  border: none; border-radius: 10px; padding: 12px 30px;
+  font: inherit; font-size: .95em; font-weight: 700; cursor: pointer; transition: filter .15s;
+}
+.submit:hover { filter: brightness(1.08); }
+.submit:disabled { opacity: .55; cursor: default; }
+.form-status { display: inline-block; margin-left: 14px; font-size: .9em; color: var(--accent); }
+.form-status.err { color: #D9544A; }
+.form-note { margin-top: 16px; font-size: .88em; color: var(--muted); }
+.cf-turnstile { margin-top: 4px; }
 </style>
 </head>
 <body>
@@ -329,18 +353,71 @@ footer a:hover { text-decoration: underline; }
   </div>
 </div>
 </section>
-<section class="section">
+<section class="section" id="contact">
 <span class="eyebrow">Contact</span>
 <h2>Kontakt aufnehmen</h2>
 <p class="sub">Fehlermeldungen, Feature-Wünsche und Fragen</p>
-<div class="grid">
-<div class="card t-bug"><span class="tag">BUG REPORT</span><h3>Fehlermeldungen</h3>
-<p>Einen Fehler gefunden? Bitte gib die Schritte zur Reproduktion an.<br><a href="https://github.com/kizzz9/Canopy/issues" target="_blank" rel="noopener">GitHub Issues →</a></p></div>
-<div class="card t-idea"><span class="tag">FEATURE</span><h3>Feature-Wünsche</h3>
-<p>Du hast eine Idee für eine neue Funktion? Wir freuen uns, davon zu hören.<br><a href="https://github.com/kizzz9/Canopy/issues" target="_blank" rel="noopener">GitHub Issues →</a></p></div>
-<div class="card t-q"><span class="tag">QUESTION</span><h3>Fragen</h3>
-<p>Fragen zur Nutzung oder zu den Spezifikationen? Frag einfach nach.<br><a href="https://github.com/kizzz9/Canopy/issues" target="_blank" rel="noopener">GitHub Issues →</a></p></div>
-</div>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<form class="form-card" id="contact-form">
+  <div class="field">
+    <label for="cf-name">Name (optional)</label>
+    <input id="cf-name" name="name" type="text" maxlength="100" autocomplete="name">
+  </div>
+  <div class="field">
+    <label for="cf-email">Antwort-E-Mail (optional, falls Sie eine Antwort wünschen)</label>
+    <input id="cf-email" name="email" type="email" maxlength="200" autocomplete="email">
+  </div>
+  <div class="field">
+    <label for="cf-message">Nachricht<span class="req">erforderlich</span></label>
+    <textarea id="cf-message" name="message" maxlength="5000" required></textarea>
+  </div>
+  <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <div class="field"><div class="cf-turnstile" data-sitekey="0x4AAAAAADv-5iOVlinTmIvp" data-theme="auto" data-language="de"></div></div>
+  <button type="submit" class="submit">Senden</button>
+  <span class="form-status" id="form-status" role="status"></span>
+  <p class="form-note">Ihre Nachricht wird nur zur Kontaktaufnahme mit dem Entwickler verwendet. Geben Sie Ihre E-Mail an, wenn Sie eine Antwort möchten.</p>
+</form>
+<script>
+(() => {
+  const ENDPOINT = "https://canopy-contact.nsmtkz9.workers.dev";
+  const S = {"msg": "Bitte geben Sie eine Nachricht ein", "turnstile": "Bitte schließen Sie die Verifizierung ab", "sending": "Wird gesendet…", "success": "Gesendet. Vielen Dank!", "error": "Senden fehlgeschlagen. Bitte versuchen Sie es später erneut"};
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("form-status");
+  const button = form.querySelector(".submit");
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const hasTurnstile = !!form.querySelector(".cf-turnstile");
+    const token = form.querySelector('[name="cf-turnstile-response"]')?.value ?? "";
+    const message = form.message.value.trim();
+    status.classList.remove("err");
+    if (!message) { status.textContent = S.msg; status.classList.add("err"); return; }
+    if (hasTurnstile && !token) { status.textContent = S.turnstile; status.classList.add("err"); return; }
+    button.disabled = true;
+    status.textContent = S.sending;
+    try {
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name.value, email: form.email.value, message,
+          token, website: form.website.value,
+        }),
+      });
+      const body = await res.json();
+      if (!body.ok) throw new Error(body.error);
+      form.reset();
+      if (window.turnstile) turnstile.reset();
+      status.textContent = S.success;
+    } catch {
+      status.textContent = S.error;
+      status.classList.add("err");
+      if (window.turnstile) turnstile.reset();
+    } finally {
+      button.disabled = false;
+    }
+  });
+})();
+</script>
 </section>
 <section class="section">
 <span class="eyebrow">FAQ</span>
@@ -354,4 +431,4 @@ footer a:hover { text-decoration: underline; }
 <details><summary><span class="qn">Q06</span>Wie werden die Noten berechnet?</summary><div class="a">Die Noten basieren auf 5 Faktoren: Komplexität, Verschachtelungstiefe, State-Anzahl, Body Weight und Modifier-Anzahl. Die Skala reicht von A (exzellent) bis F (Verbesserung nötig), wobei C oder besser die empfohlene Grundlage ist.</div></details>
 </section>
 </main>
-<footer><nav><a href="https://kizzz9.github.io/canopy-privacy-policy/de/">Datenschutzerklärung</a><a href="https://github.com/kizzz9/Canopy/issues">Kontakt</a></nav><div>© 2026 Canopy. All rights reserved.</div></footer></body></html>
+<footer><nav><a href="https://kizzz9.github.io/canopy-privacy-policy/de/">Datenschutzerklärung</a><a href="#contact">Kontakt</a></nav><div>© 2026 Canopy. All rights reserved.</div></footer></body></html>

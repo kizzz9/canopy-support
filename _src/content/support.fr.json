@@ -9,20 +9,46 @@
   "guide_btn": "Ouvrir le guide",
   "contact_h2": "Nous contacter",
   "contact_sub": "Rapports de bugs, demandes de fonctionnalités et questions",
-  "contact_cards": [
-    { "emoji": "🐛", "h": "Rapports de bugs", "p": "Vous avez trouvé un bug ? Merci d'indiquer les étapes pour le reproduire." },
-    { "emoji": "💡", "h": "Demandes de fonctionnalités", "p": "Une idée de nouvelle fonctionnalité ? Nous serions ravis de la connaître." },
-    { "emoji": "❓", "h": "Questions", "p": "Des questions sur l'utilisation ou les spécifications ? N'hésitez pas à demander." }
-  ],
+  "form": {
+    "name_label": "Nom (facultatif)",
+    "email_label": "E-mail de réponse (facultatif, si vous souhaitez une réponse)",
+    "message_label": "Message",
+    "required": "requis",
+    "submit": "Envoyer",
+    "note": "Votre message sert uniquement à contacter le développeur. Indiquez votre e-mail si vous souhaitez une réponse.",
+    "st_message": "Veuillez saisir un message",
+    "st_turnstile": "Veuillez compléter la vérification",
+    "st_sending": "Envoi…",
+    "st_success": "Envoyé. Merci !",
+    "st_error": "Échec de l'envoi. Veuillez réessayer plus tard"
+  },
   "faq_h2": "Questions fréquentes",
   "faq_sub": "Questions courantes avant et après l'achat",
   "faq": [
-    { "q": "Canopy modifie-t-il le code de mon projet ?", "a": "Non. Canopy est entièrement en lecture seule. Il ne modifie, ne supprime ni n'écrit jamais dans vos fichiers." },
-    { "q": "Une connexion Internet est-elle nécessaire ?", "a": "Non. Toutes les analyses s'exécutent localement sur votre Mac. Aucune donnée n'est jamais envoyée à l'extérieur." },
-    { "q": "Quelle est la configuration système requise ?", "a": "macOS 15.0 (Sequoia) ou ultérieur est requis. Les Mac Apple Silicon et Intel sont tous deux pris en charge." },
-    { "q": "Quels types de projets sont pris en charge ?", "a": "Canopy analyse les projets Swift utilisant SwiftUI. Le code UIKit et Objective-C n'est pas analysé." },
-    { "q": "Puis-je définir des règles personnalisées ?", "a": "Oui. Placez un fichier .canopy-rules.json ou .canopy-rules.yml à la racine de votre projet pour définir les conventions de nommage, les limites de State, les restrictions de profondeur d'imbrication, et plus encore. Partagez-les au sein de votre équipe." },
-    { "q": "Comment les grades sont-ils calculés ?", "a": "Les grades reposent sur 5 facteurs : complexité, profondeur d'imbrication, nombre de State, Body Weight et nombre de modifiers. L'échelle va de A (excellent) à F (à améliorer), C ou plus étant la référence recommandée." }
+    {
+      "q": "Canopy modifie-t-il le code de mon projet ?",
+      "a": "Non. Canopy est entièrement en lecture seule. Il ne modifie, ne supprime ni n'écrit jamais dans vos fichiers."
+    },
+    {
+      "q": "Une connexion Internet est-elle nécessaire ?",
+      "a": "Non. Toutes les analyses s'exécutent localement sur votre Mac. Aucune donnée n'est jamais envoyée à l'extérieur."
+    },
+    {
+      "q": "Quelle est la configuration système requise ?",
+      "a": "macOS 15.0 (Sequoia) ou ultérieur est requis. Les Mac Apple Silicon et Intel sont tous deux pris en charge."
+    },
+    {
+      "q": "Quels types de projets sont pris en charge ?",
+      "a": "Canopy analyse les projets Swift utilisant SwiftUI. Le code UIKit et Objective-C n'est pas analysé."
+    },
+    {
+      "q": "Puis-je définir des règles personnalisées ?",
+      "a": "Oui. Placez un fichier .canopy-rules.json ou .canopy-rules.yml à la racine de votre projet pour définir les conventions de nommage, les limites de State, les restrictions de profondeur d'imbrication, et plus encore. Partagez-les au sein de votre équipe."
+    },
+    {
+      "q": "Comment les grades sont-ils calculés ?",
+      "a": "Les grades reposent sur 5 facteurs : complexité, profondeur d'imbrication, nombre de State, Body Weight et nombre de modifiers. L'échelle va de A (excellent) à F (à améliorer), C ou plus étant la référence recommandée."
+    }
   ],
   "footer_privacy": "Politique de confidentialité",
   "footer_contact": "Contact",

@@ -9,20 +9,46 @@
   "guide_btn": "Apri la guida",
   "contact_h2": "Contattaci",
   "contact_sub": "Segnalazioni di bug, richieste di funzionalità e domande",
-  "contact_cards": [
-    { "emoji": "🐛", "h": "Segnalazioni di bug", "p": "Hai trovato un bug? Includi i passaggi per riprodurre il problema." },
-    { "emoji": "💡", "h": "Richieste di funzionalità", "p": "Hai un'idea per una nuova funzionalità? Ci farebbe piacere conoscerla." },
-    { "emoji": "❓", "h": "Domande", "p": "Domande sull'uso o sulle specifiche? Non esitare a chiedere." }
-  ],
+  "form": {
+    "name_label": "Nome (facoltativo)",
+    "email_label": "Email di risposta (facoltativa, se desideri una risposta)",
+    "message_label": "Messaggio",
+    "required": "obbligatorio",
+    "submit": "Invia",
+    "note": "Il tuo messaggio viene usato solo per contattare lo sviluppatore. Indica la tua email se desideri una risposta.",
+    "st_message": "Inserisci un messaggio",
+    "st_turnstile": "Completa la verifica",
+    "st_sending": "Invio…",
+    "st_success": "Inviato. Grazie!",
+    "st_error": "Invio non riuscito. Riprova più tardi"
+  },
   "faq_h2": "Domande frequenti",
   "faq_sub": "Domande comuni prima e dopo l'acquisto",
   "faq": [
-    { "q": "Canopy modifica il codice del mio progetto?", "a": "No. Canopy è completamente di sola lettura. Non modifica, elimina o scrive mai nei tuoi file." },
-    { "q": "È necessaria una connessione internet?", "a": "No. Tutta l'analisi viene eseguita localmente sul tuo Mac. Nessun dato viene mai inviato all'esterno." },
-    { "q": "Quali sono i requisiti di sistema?", "a": "È richiesto macOS 15.0 (Sequoia) o versioni successive. Sono supportati sia i Mac Apple Silicon che quelli Intel." },
-    { "q": "Che tipo di progetti sono supportati?", "a": "Canopy analizza i progetti Swift che utilizzano SwiftUI. Il codice UIKit e Objective-C non viene analizzato." },
-    { "q": "Posso impostare regole personalizzate?", "a": "Sì. Inserisci un file .canopy-rules.json o .canopy-rules.yml nella root del progetto per definire convenzioni di denominazione, limiti di State, restrizioni sulla profondità di annidamento e altro ancora. Condividile con il tuo team." },
-    { "q": "Come vengono calcolati i voti?", "a": "I voti si basano su 5 fattori: complessità, profondità di annidamento, numero di State, Body Weight e numero di modifier. La scala va da A (eccellente) a F (da migliorare), con C o superiore come base consigliata." }
+    {
+      "q": "Canopy modifica il codice del mio progetto?",
+      "a": "No. Canopy è completamente di sola lettura. Non modifica, elimina o scrive mai nei tuoi file."
+    },
+    {
+      "q": "È necessaria una connessione internet?",
+      "a": "No. Tutta l'analisi viene eseguita localmente sul tuo Mac. Nessun dato viene mai inviato all'esterno."
+    },
+    {
+      "q": "Quali sono i requisiti di sistema?",
+      "a": "È richiesto macOS 15.0 (Sequoia) o versioni successive. Sono supportati sia i Mac Apple Silicon che quelli Intel."
+    },
+    {
+      "q": "Che tipo di progetti sono supportati?",
+      "a": "Canopy analizza i progetti Swift che utilizzano SwiftUI. Il codice UIKit e Objective-C non viene analizzato."
+    },
+    {
+      "q": "Posso impostare regole personalizzate?",
+      "a": "Sì. Inserisci un file .canopy-rules.json o .canopy-rules.yml nella root del progetto per definire convenzioni di denominazione, limiti di State, restrizioni sulla profondità di annidamento e altro ancora. Condividile con il tuo team."
+    },
+    {
+      "q": "Come vengono calcolati i voti?",
+      "a": "I voti si basano su 5 fattori: complessità, profondità di annidamento, numero di State, Body Weight e numero di modifier. La scala va da A (eccellente) a F (da migliorare), con C o superiore come base consigliata."
+    }
   ],
   "footer_privacy": "Informativa sulla privacy",
   "footer_contact": "Contatti",

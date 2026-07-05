@@ -288,6 +288,30 @@ footer a:hover { text-decoration: underline; }
 }
 .toc a:hover { color: var(--hero-ink); border-color: rgba(91,228,155,.6); }
 @media (max-width: 640px) { .hero h1 { font-size: 1.8em; } .langs { position: static; justify-content: center; margin-bottom: 18px; } }
+
+/* お問い合わせフォーム */
+.form-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 26px; }
+.field { margin-bottom: 15px; }
+.field label { display: block; font-size: .82em; font-weight: 600; color: var(--muted); margin-bottom: 6px; }
+.field .req { color: var(--accent); margin-left: 8px; font-size: .72em; font-family: var(--mono); letter-spacing: .06em; }
+.field input, .field textarea {
+  width: 100%; background: var(--bg); border: 1px solid var(--line);
+  border-radius: 9px; padding: 11px 13px; font: inherit; font-size: .95em; color: var(--ink);
+}
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--glow); }
+.field textarea { min-height: 150px; resize: vertical; }
+.hp { position: absolute; left: -5000px; width: 1px; height: 1px; opacity: 0; }
+.submit {
+  display: inline-block; background: var(--accent); color: var(--surface);
+  border: none; border-radius: 10px; padding: 12px 30px;
+  font: inherit; font-size: .95em; font-weight: 700; cursor: pointer; transition: filter .15s;
+}
+.submit:hover { filter: brightness(1.08); }
+.submit:disabled { opacity: .55; cursor: default; }
+.form-status { display: inline-block; margin-left: 14px; font-size: .9em; color: var(--accent); }
+.form-status.err { color: #D9544A; }
+.form-note { margin-top: 16px; font-size: .88em; color: var(--muted); }
+.cf-turnstile { margin-top: 4px; }
 </style>
 </head>
 <body>
@@ -329,18 +353,71 @@ footer a:hover { text-decoration: underline; }
   </div>
 </div>
 </section>
-<section class="section">
+<section class="section" id="contact">
 <span class="eyebrow">Contact</span>
 <h2>Get in Touch</h2>
 <p class="sub">Bug reports, feature requests, and questions</p>
-<div class="grid">
-<div class="card t-bug"><span class="tag">BUG REPORT</span><h3>Bug Reports</h3>
-<p>Found a bug? Please include steps to reproduce the issue.<br><a href="https://github.com/kizzz9/Canopy/issues" target="_blank" rel="noopener">GitHub Issues →</a></p></div>
-<div class="card t-idea"><span class="tag">FEATURE</span><h3>Feature Requests</h3>
-<p>Have an idea for a new feature? We'd love to hear it.<br><a href="https://github.com/kizzz9/Canopy/issues" target="_blank" rel="noopener">GitHub Issues →</a></p></div>
-<div class="card t-q"><span class="tag">QUESTION</span><h3>Questions</h3>
-<p>Questions about usage or specifications? Don't hesitate to ask.<br><a href="https://github.com/kizzz9/Canopy/issues" target="_blank" rel="noopener">GitHub Issues →</a></p></div>
-</div>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<form class="form-card" id="contact-form">
+  <div class="field">
+    <label for="cf-name">Name (optional)</label>
+    <input id="cf-name" name="name" type="text" maxlength="100" autocomplete="name">
+  </div>
+  <div class="field">
+    <label for="cf-email">Reply email (optional, if you'd like a response)</label>
+    <input id="cf-email" name="email" type="email" maxlength="200" autocomplete="email">
+  </div>
+  <div class="field">
+    <label for="cf-message">Message<span class="req">required</span></label>
+    <textarea id="cf-message" name="message" maxlength="5000" required></textarea>
+  </div>
+  <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <div class="field"><div class="cf-turnstile" data-sitekey="0x4AAAAAADv-5iOVlinTmIvp" data-theme="auto" data-language="en"></div></div>
+  <button type="submit" class="submit">Send</button>
+  <span class="form-status" id="form-status" role="status"></span>
+  <p class="form-note">Your message is used only to contact the developer. Include your email if you'd like a reply.</p>
+</form>
+<script>
+(() => {
+  const ENDPOINT = "https://canopy-contact.nsmtkz9.workers.dev";
+  const S = {"msg": "Please enter a message", "turnstile": "Please complete the verification", "sending": "Sending…", "success": "Sent. Thank you!", "error": "Failed to send. Please try again later"};
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("form-status");
+  const button = form.querySelector(".submit");
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const hasTurnstile = !!form.querySelector(".cf-turnstile");
+    const token = form.querySelector('[name="cf-turnstile-response"]')?.value ?? "";
+    const message = form.message.value.trim();
+    status.classList.remove("err");
+    if (!message) { status.textContent = S.msg; status.classList.add("err"); return; }
+    if (hasTurnstile && !token) { status.textContent = S.turnstile; status.classList.add("err"); return; }
+    button.disabled = true;
+    status.textContent = S.sending;
+    try {
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name.value, email: form.email.value, message,
+          token, website: form.website.value,
+        }),
+      });
+      const body = await res.json();
+      if (!body.ok) throw new Error(body.error);
+      form.reset();
+      if (window.turnstile) turnstile.reset();
+      status.textContent = S.success;
+    } catch {
+      status.textContent = S.error;
+      status.classList.add("err");
+      if (window.turnstile) turnstile.reset();
+    } finally {
+      button.disabled = false;
+    }
+  });
+})();
+</script>
 </section>
 <section class="section">
 <span class="eyebrow">FAQ</span>
@@ -354,4 +431,4 @@ footer a:hover { text-decoration: underline; }
 <details><summary><span class="qn">Q06</span>How are grades calculated?</summary><div class="a">Grades are based on 5 factors: complexity, nesting depth, State count, body weight, and modifier count. The scale runs from A (excellent) to F (needs improvement), with C or above being the recommended baseline.</div></details>
 </section>
 </main>
-<footer><nav><a href="https://kizzz9.github.io/canopy-privacy-policy/en/">Privacy Policy</a><a href="https://github.com/kizzz9/Canopy/issues">Contact</a></nav><div>© 2026 Canopy. All rights reserved.</div></footer></body></html>
+<footer><nav><a href="https://kizzz9.github.io/canopy-privacy-policy/en/">Privacy Policy</a><a href="#contact">Contact</a></nav><div>© 2026 Canopy. All rights reserved.</div></footer></body></html>
