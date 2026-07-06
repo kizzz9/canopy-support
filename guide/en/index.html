@@ -443,17 +443,17 @@ footer a:hover { text-decoration: underline; }
 <section class="section" id="cli">
 <span class="eyebrow">CLI</span>
 <h2>Command Line</h2>
-<p class="sub">Headless execution for CI/CD pipeline integration</p>
+<p class="sub">Headless execution for local automation</p>
 <pre class="term"><span class="c"># Output analysis results in JSON format</span>
 <span class="p">$</span> Canopy --analyze /path/to/project --format json
 
-<span class="c"># SARIF format (for GitHub Code Scanning)</span>
+<span class="c"># SARIF format</span>
 <span class="p">$</span> Canopy --analyze /path/to/project --format sarif
 
 <span class="c"># Display JSON Schema</span>
 <span class="p">$</span> Canopy --format json-schema</pre>
 <div class="tip"><b>SETUP</b>Before using the CLI, open the project folder in Canopy (GUI) once. Access permissions are saved, and you can analyze from the CLI from then on.</div>
-<div class="tip"><b>CI</b>Upload SARIF output to GitHub Actions to display quality warnings inline on pull requests.</div>
+<div class="tip"><b>CI</b>Add it to a pre-commit hook to catch F-grade code before committing.</div>
 </section>
 </main>
 <footer><nav><a href="https://kizzz9.github.io/canopy-support/en/">Support</a><a href="https://kizzz9.github.io/canopy-privacy-policy/en/">Privacy Policy</a><a href="https://kizzz9.github.io/canopy-support/en/#contact">Contact</a></nav><div>© 2026 Canopy. All rights reserved.</div></footer></body></html>

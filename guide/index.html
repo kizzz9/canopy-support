@@ -443,17 +443,17 @@ footer a:hover { text-decoration: underline; }
 <section class="section" id="cli">
 <span class="eyebrow">CLI</span>
 <h2>コマンドライン</h2>
-<p class="sub">CI/CD パイプラインに組み込めるヘッドレス実行</p>
+<p class="sub">手元で自動チェックできるヘッドレス実行</p>
 <pre class="term"><span class="c"># JSON 形式で解析結果を出力</span>
 <span class="p">$</span> Canopy --analyze /path/to/project --format json
 
-<span class="c"># SARIF 形式（GitHub Code Scanning 連携）</span>
+<span class="c"># SARIF 形式</span>
 <span class="p">$</span> Canopy --analyze /path/to/project --format sarif
 
 <span class="c"># JSON Schema を表示</span>
 <span class="p">$</span> Canopy --format json-schema</pre>
 <div class="tip"><b>SETUP</b>CLI で解析するプロジェクトは、先に Canopy（GUI）で一度開いてください。アクセス権が保存され、以降は CLI から解析できるようになります。</div>
-<div class="tip"><b>CI</b>SARIF 出力を GitHub Actions にアップロードすると、PR 上で品質警告がインライン表示されます。</div>
+<div class="tip"><b>CI</b>pre-commit フックに組み込めば、F グレードのコードをコミット前に検出できます。</div>
 </section>
 </main>
 <footer><nav><a href="https://kizzz9.github.io/canopy-support/">サポート</a><a href="https://kizzz9.github.io/canopy-privacy-policy/">プライバシーポリシー</a><a href="https://kizzz9.github.io/canopy-support/#contact">お問い合わせ</a></nav><div>© 2026 Canopy. All rights reserved.</div></footer></body></html>

@@ -443,17 +443,17 @@ footer a:hover { text-decoration: underline; }
 <section class="section" id="cli">
 <span class="eyebrow">CLI</span>
 <h2>Riga di comando</h2>
-<p class="sub">Esecuzione headless per l'integrazione con pipeline CI/CD</p>
+<p class="sub">Esecuzione headless per l'automazione locale</p>
 <pre class="term"><span class="c"># Restituisce i risultati dell'analisi in formato JSON</span>
 <span class="p">$</span> Canopy --analyze /path/to/project --format json
 
-<span class="c"># Formato SARIF (per GitHub Code Scanning)</span>
+<span class="c"># Formato SARIF</span>
 <span class="p">$</span> Canopy --analyze /path/to/project --format sarif
 
 <span class="c"># Mostra lo schema JSON</span>
 <span class="p">$</span> Canopy --format json-schema</pre>
 <div class="tip"><b>SETUP</b>Prima di usare la CLI, apri una volta la cartella del progetto in Canopy (GUI). I permessi di accesso verranno salvati, e da quel momento potrai analizzare dalla CLI.</div>
-<div class="tip"><b>CI</b>Carica l'output SARIF su GitHub Actions per mostrare gli avvisi di qualità direttamente nelle pull request.</div>
+<div class="tip"><b>CI</b>Inseriscilo in un hook pre-commit per individuare il codice di grado F prima del commit.</div>
 </section>
 </main>
 <footer><nav><a href="https://kizzz9.github.io/canopy-support/it/">Assistenza</a><a href="https://kizzz9.github.io/canopy-privacy-policy/it/">Informativa sulla privacy</a><a href="https://kizzz9.github.io/canopy-support/it/#contact">Contatti</a></nav><div>© 2026 Canopy. All rights reserved.</div></footer></body></html>
