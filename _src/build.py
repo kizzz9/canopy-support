@@ -538,11 +538,6 @@ def build_support(lang, c):
   </div>
 </div>
 </section>
-<section class="section" id="contact">
-<span class="eyebrow">Contact</span>
-<h2>{esc(c['contact_h2'])}</h2>
-<p class="sub">{esc(c['contact_sub'])}</p>
-{contact_form_html(lang, c)}
 </section>"""
     out += """
 <section class="section">
@@ -555,7 +550,15 @@ def build_support(lang, c):
             f"<details><summary><span class=\"qn\">Q{i:02d}</span>{esc(qa['q'])}</summary>"
             f"<div class=\"a\">{esc(qa['a'])}</div></details>\n"
         )
-    out += "</section>\n</main>\n"
+    out += f"""</section>
+<section class="section" id="contact">
+<span class="eyebrow">Contact</span>
+<h2>{esc(c['contact_h2'])}</h2>
+<p class="sub">{esc(c['contact_sub'])}</p>
+{contact_form_html(lang, c)}
+</section>
+</main>
+"""
     out += footer_html(c, [(c["footer_guide"], f"{SUPPORT_BASE}/guide/{d}"), (c["footer_privacy"], f"{PRIVACY_BASE}/{d}"), (c["footer_contact"], "#contact")])
     return out
 
