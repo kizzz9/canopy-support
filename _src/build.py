@@ -315,12 +315,13 @@ footer a { text-decoration: none; font-weight: 500; }
 footer a:hover { text-decoration: underline; }
 
 /* ガイド目次 */
-.toc { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
+.toc { display: flex; gap: 6px 16px; flex-wrap: wrap; margin-top: 22px; }
 .toc a {
-  font-family: var(--mono); font-size: .78em; color: var(--hero-muted); text-decoration: none;
-  border: 1px solid rgba(91,228,155,.25); border-radius: 999px; padding: 5px 14px;
+  font-size: .88em; color: var(--hero-muted); text-decoration: none;
+  padding: 2px 0; border-bottom: 1px dashed rgba(91,228,155,.4); transition: color .15s, border-color .15s;
 }
-.toc a:hover { color: var(--hero-ink); border-color: rgba(91,228,155,.6); }
+.toc a:hover { color: var(--hero-accent); border-bottom-style: solid; border-bottom-color: var(--hero-accent); }
+.toc a::before { content: "# "; font-family: var(--mono); font-size: .85em; color: rgba(91,228,155,.5); }
 @media (max-width: 640px) { .hero h1 { font-size: 1.8em; } .langs { position: static; justify-content: center; margin-bottom: 18px; } }
 
 /* お問い合わせフォーム */
