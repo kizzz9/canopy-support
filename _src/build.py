@@ -287,6 +287,20 @@ summary .qn { font-family: var(--mono); font-size: .8em; color: var(--accent); f
 .audit .crow p { color: var(--muted); font-size: .88em; margin: 0; }
 @media (max-width: 720px) { .audit { grid-template-columns: 1fr; } }
 
+/* サイトナビ */
+.site-nav {
+  background: var(--surface); border-bottom: 1px solid var(--line);
+  padding: 10px 24px; display: flex; align-items: center; gap: 18px;
+  font-size: .85em; position: sticky; top: 0; z-index: 100;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.site-nav .brand { display: flex; align-items: center; gap: 8px; font-weight: 700; text-decoration: none; color: var(--ink); }
+.site-nav .brand img { width: 22px; height: 22px; border-radius: 5px; }
+.site-nav .sep { color: var(--line); }
+.site-nav a { text-decoration: none; color: var(--muted); font-weight: 500; }
+.site-nav a:hover { color: var(--accent); }
+.site-nav a.active { color: var(--accent); font-weight: 700; }
+
 /* フッター */
 footer { border-top: 1px solid var(--line); padding: 34px 24px; text-align: center; color: var(--muted); font-size: .85em; }
 footer nav { margin-bottom: 8px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
@@ -399,6 +413,27 @@ def lang_switcher(lang, depth_to_root, subpath=""):
     return '<div class="langs">' + "".join(items) + "</div>"
 
 
+def site_nav_html(c, depth, lang, active_page):
+    d = lang_dir(lang)
+    support_url = f"{depth}{d}" or "./"
+    guide_url = f"{depth}guide/{d}"
+    nav_items = [
+        ("support", c.get("nav_support", "Support"), support_url),
+        ("guide", c.get("nav_guide", "Guide"), guide_url),
+    ]
+    links = []
+    for key, label, href in nav_items:
+        cls = ' class="active"' if key == active_page else ""
+        links.append(f'<a href="{href}"{cls}>{esc(label)}</a>')
+    return (
+        f'<nav class="site-nav">'
+        f'<a class="brand" href="{support_url}"><img src="{depth}icon.png" alt="">Canopy</a>'
+        f'<span class="sep">|</span>'
+        f'{"".join(links)}'
+        f'</nav>'
+    )
+
+
 def footer_html(c, links):
     nav = "".join(f'<a href="{href}">{esc(label)}</a>' for label, href in links)
     return f"<footer><nav>{nav}</nav><div>{esc(c['copyright'])}</div></footer></body></html>"
@@ -486,6 +521,7 @@ def build_support(lang, c):
     d = lang_dir(lang)
     depth = "../" if d else ""
     out = head(c["title"], c["lede"], lang, SUPPORT_BASE, "{dir}", depth)
+    out += site_nav_html(c, depth, lang, "support")
     out += hero_html(lang, depth, "Support", c["h1"], c["lede"])
     out += f"""
 <main class="container">
@@ -497,7 +533,7 @@ def build_support(lang, c):
   <div>
     <h3>{esc(c['guide_card_h'])}</h3>
     <p>{esc(c['guide_card_p'])}</p>
-    <div class="chips"><span>Getting Started</span><span>Features</span><span>⌘ Shortcuts</span><span>Export</span><span>CLI / CI</span></div>
+    <div class="chips"><span>Getting Started</span><span>Features</span><span>⌘ Shortcuts</span><span>Export</span><span>CLI</span></div>
     <a class="btn" href="{depth}guide/{d}">{esc(c['guide_btn'])} →</a>
   </div>
 </div>
@@ -520,7 +556,7 @@ def build_support(lang, c):
             f"<div class=\"a\">{esc(qa['a'])}</div></details>\n"
         )
     out += "</section>\n</main>\n"
-    out += footer_html(c, [(c["footer_privacy"], f"{PRIVACY_BASE}/{d}"), (c["footer_contact"], "#contact")])
+    out += footer_html(c, [(c["footer_guide"], f"{SUPPORT_BASE}/guide/{d}"), (c["footer_privacy"], f"{PRIVACY_BASE}/{d}"), (c["footer_contact"], "#contact")])
     return out
 
 
@@ -528,6 +564,7 @@ def build_guide(lang, c):
     d = lang_dir(lang)
     depth = "../../" if d else "../"
     out = head(c["title"], c["lede"], lang, SUPPORT_BASE, "guide/{dir}", depth)
+    out += site_nav_html(c, depth, lang, "guide")
     toc = "".join(f'<a href="#{sid}">{esc(label)}</a>' for sid, label in c["toc"])
     extra = (
         f'<div class="meta-pills"><span>macOS 15.0+</span><span>{esc(c["pill_readonly"])}</span>'
@@ -627,11 +664,11 @@ def build_guide(lang, c):
 <span class="c"># {esc(c['cli_c3'])}</span>
 <span class="p">$</span> Canopy --format json-schema</pre>
 <div class="tip"><b>SETUP</b>{esc(c['cli_setup'])}</div>
-<div class="tip"><b>CI</b>{esc(c['cli_ci'])}</div>
+<div class="tip"><b>PRE-COMMIT</b>{esc(c['cli_ci'])}</div>
 </section>
 </main>
 """
-    out += footer_html(c, [(c["footer_support"], f"{SUPPORT_BASE}/{d}"), (c["footer_privacy"], f"{PRIVACY_BASE}/{d}"), (c["footer_contact"], f"{SUPPORT_BASE}/{d}#contact")])
+    out += footer_html(c, [(c["footer_support"], f"{SUPPORT_BASE}/{d}"), (c["footer_guide"], f"{SUPPORT_BASE}/guide/{d}"), (c["footer_privacy"], f"{PRIVACY_BASE}/{d}"), (c["footer_contact"], f"{SUPPORT_BASE}/{d}#contact")])
     return out
 
 

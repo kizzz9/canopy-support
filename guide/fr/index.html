@@ -274,6 +274,20 @@ summary .qn { font-family: var(--mono); font-size: .8em; color: var(--accent); f
 .audit .crow p { color: var(--muted); font-size: .88em; margin: 0; }
 @media (max-width: 720px) { .audit { grid-template-columns: 1fr; } }
 
+/* サイトナビ */
+.site-nav {
+  background: var(--surface); border-bottom: 1px solid var(--line);
+  padding: 10px 24px; display: flex; align-items: center; gap: 18px;
+  font-size: .85em; position: sticky; top: 0; z-index: 100;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.site-nav .brand { display: flex; align-items: center; gap: 8px; font-weight: 700; text-decoration: none; color: var(--ink); }
+.site-nav .brand img { width: 22px; height: 22px; border-radius: 5px; }
+.site-nav .sep { color: var(--line); }
+.site-nav a { text-decoration: none; color: var(--muted); font-weight: 500; }
+.site-nav a:hover { color: var(--accent); }
+.site-nav a.active { color: var(--accent); font-weight: 700; }
+
 /* フッター */
 footer { border-top: 1px solid var(--line); padding: 34px 24px; text-align: center; color: var(--muted); font-size: .85em; }
 footer nav { margin-bottom: 8px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
@@ -314,7 +328,7 @@ footer a:hover { text-decoration: underline; }
 .cf-turnstile { margin-top: 4px; }
 </style>
 </head>
-<body>
+<body><nav class="site-nav"><a class="brand" href="../../fr/"><img src="../../icon.png" alt="">Canopy</a><span class="sep">|</span><a href="../../fr/">Support</a><a href="../../guide/fr/" class="active">Guide utilisateur</a></nav>
 <header class="hero">
 <div class="langs"><a href="../../">日本語</a><a href="../../en/">English</a><b>Français</b><a href="../../de/">Deutsch</a><a href="../../es/">Español</a><a href="../../it/">Italiano</a></div>
 <div class="hero-grid">
@@ -453,7 +467,7 @@ footer a:hover { text-decoration: underline; }
 <span class="c"># Afficher le schéma JSON</span>
 <span class="p">$</span> Canopy --format json-schema</pre>
 <div class="tip"><b>SETUP</b>Avant d'utiliser la CLI, ouvrez d'abord une fois le dossier du projet dans Canopy (interface graphique). Les droits d'accès sont enregistrés, et vous pourrez ensuite analyser depuis la CLI.</div>
-<div class="tip"><b>CI</b>Ajoutez-le à un hook pre-commit pour détecter le code de grade F avant le commit.</div>
+<div class="tip"><b>PRE-COMMIT</b>Ajoutez-le à un hook pre-commit pour détecter le code de grade F avant le commit.</div>
 </section>
 </main>
-<footer><nav><a href="https://kizzz9.github.io/canopy-support/fr/">Support</a><a href="https://kizzz9.github.io/canopy-privacy-policy/fr/">Politique de confidentialité</a><a href="https://kizzz9.github.io/canopy-support/fr/#contact">Contact</a></nav><div>© 2026 Canopy. All rights reserved.</div></footer></body></html>
+<footer><nav><a href="https://kizzz9.github.io/canopy-support/fr/">Support</a><a href="https://kizzz9.github.io/canopy-support/guide/fr/">Guide utilisateur</a><a href="https://kizzz9.github.io/canopy-privacy-policy/fr/">Politique de confidentialité</a><a href="https://kizzz9.github.io/canopy-support/fr/#contact">Contact</a></nav><div>© 2026 Canopy. All rights reserved.</div></footer></body></html>
