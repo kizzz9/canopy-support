@@ -289,17 +289,24 @@ summary .qn { font-family: var(--mono); font-size: .8em; color: var(--accent); f
 
 /* サイトナビ */
 .site-nav {
-  background: var(--surface); border-bottom: 1px solid var(--line);
-  padding: 10px 24px; display: flex; align-items: center; gap: 18px;
-  font-size: .85em; position: sticky; top: 0; z-index: 100;
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  background: var(--bg); border-bottom: 1px solid var(--line);
+  padding: 0 24px; display: flex; align-items: stretch; gap: 0;
+  font-size: .88em; position: sticky; top: 0; z-index: 100;
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
 }
-.site-nav .brand { display: flex; align-items: center; gap: 8px; font-weight: 700; text-decoration: none; color: var(--ink); }
+.site-nav .brand {
+  display: flex; align-items: center; gap: 8px; font-weight: 700;
+  text-decoration: none; color: var(--ink); padding: 10px 0; margin-right: 24px;
+}
 .site-nav .brand img { width: 22px; height: 22px; border-radius: 5px; }
-.site-nav .sep { color: var(--line); }
-.site-nav a { text-decoration: none; color: var(--muted); font-weight: 500; }
-.site-nav a:hover { color: var(--accent); }
-.site-nav a.active { color: var(--accent); font-weight: 700; }
+.site-nav .sep { display: none; }
+.site-nav a.nav-link {
+  text-decoration: none; color: var(--muted); font-weight: 500;
+  padding: 10px 14px; border-bottom: 2px solid transparent; transition: color .15s, border-color .15s;
+}
+.site-nav a.nav-link:hover { color: var(--ink); border-bottom-color: var(--line); }
+.site-nav a.nav-link.active { color: var(--accent); font-weight: 700; border-bottom-color: var(--accent); }
 
 /* フッター */
 footer { border-top: 1px solid var(--line); padding: 34px 24px; text-align: center; color: var(--muted); font-size: .85em; }
@@ -423,12 +430,11 @@ def site_nav_html(c, depth, lang, active_page):
     ]
     links = []
     for key, label, href in nav_items:
-        cls = ' class="active"' if key == active_page else ""
-        links.append(f'<a href="{href}"{cls}>{esc(label)}</a>')
+        cls = "nav-link active" if key == active_page else "nav-link"
+        links.append(f'<a href="{href}" class="{cls}">{esc(label)}</a>')
     return (
         f'<nav class="site-nav">'
         f'<a class="brand" href="{support_url}"><img src="{depth}icon.png" alt="">Canopy</a>'
-        f'<span class="sep">|</span>'
         f'{"".join(links)}'
         f'</nav>'
     )
