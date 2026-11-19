@@ -313,6 +313,7 @@ footer { border-top: 1px solid var(--line); padding: 34px 24px; text-align: cent
 footer nav { margin-bottom: 8px; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 footer a { text-decoration: none; font-weight: 500; }
 footer a:hover { text-decoration: underline; }
+footer .more { margin-top: 6px; font-size: .9em; }
 
 /* ガイド目次 */
 .toc { display: flex; gap: 6px 16px; flex-wrap: wrap; margin-top: 22px; }
@@ -441,9 +442,13 @@ def site_nav_html(c, depth, lang, active_page):
     )
 
 
-def footer_html(c, links):
+MORE_APPS = '<div class="more"><a href="https://kizzz9.github.io/">kizzz9 Apps</a></div>'
+
+
+def footer_html(c, links, more=False):
     nav = "".join(f'<a href="{href}">{esc(label)}</a>' for label, href in links)
-    return f"<footer><nav>{nav}</nav><div>{esc(c['copyright'])}</div></footer></body></html>"
+    extra = MORE_APPS if more else ""
+    return f"<footer><nav>{nav}</nav><div>{esc(c['copyright'])}</div>{extra}</footer></body></html>"
 
 
 def contact_form_html(lang, c):
@@ -566,7 +571,7 @@ def build_support(lang, c):
 </section>
 </main>
 """
-    out += footer_html(c, [(c["footer_guide"], f"{SUPPORT_BASE}/guide/{d}"), (c["footer_privacy"], f"{PRIVACY_BASE}/{d}"), (c["footer_contact"], "#contact")])
+    out += footer_html(c, [(c["footer_guide"], f"{SUPPORT_BASE}/guide/{d}"), (c["footer_privacy"], f"{PRIVACY_BASE}/{d}"), (c["footer_contact"], "#contact")], more=True)
     return out
 
 
@@ -678,7 +683,7 @@ def build_guide(lang, c):
 </section>
 </main>
 """
-    out += footer_html(c, [(c["footer_support"], f"{SUPPORT_BASE}/{d}"), (c["footer_guide"], f"{SUPPORT_BASE}/guide/{d}"), (c["footer_privacy"], f"{PRIVACY_BASE}/{d}"), (c["footer_contact"], f"{SUPPORT_BASE}/{d}#contact")])
+    out += footer_html(c, [(c["footer_support"], f"{SUPPORT_BASE}/{d}"), (c["footer_guide"], f"{SUPPORT_BASE}/guide/{d}"), (c["footer_privacy"], f"{PRIVACY_BASE}/{d}"), (c["footer_contact"], f"{SUPPORT_BASE}/{d}#contact")], more=True)
     return out
 
 
