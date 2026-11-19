@@ -442,12 +442,15 @@ def site_nav_html(c, depth, lang, active_page):
     )
 
 
-MORE_APPS = '<div class="more"><a href="https://kizzz9.github.io/">kizzz9 Apps</a></div>'
+def more_apps(lang):
+    """まとめサイトへのリンク。日本語のページからは日本語、ほかは英語で開く。"""
+    site_lang = "ja" if lang == "ja" else "en"
+    return f'<div class="more"><a href="https://kizzz9.github.io/?lang={site_lang}">kizzz9 Apps</a></div>'
 
 
-def footer_html(c, links, more=False):
+def footer_html(c, links, more_lang=None):
     nav = "".join(f'<a href="{href}">{esc(label)}</a>' for label, href in links)
-    extra = MORE_APPS if more else ""
+    extra = more_apps(more_lang) if more_lang else ""
     return f"<footer><nav>{nav}</nav><div>{esc(c['copyright'])}</div>{extra}</footer></body></html>"
 
 
@@ -571,7 +574,7 @@ def build_support(lang, c):
 </section>
 </main>
 """
-    out += footer_html(c, [(c["footer_guide"], f"{SUPPORT_BASE}/guide/{d}"), (c["footer_privacy"], f"{PRIVACY_BASE}/{d}"), (c["footer_contact"], "#contact")], more=True)
+    out += footer_html(c, [(c["footer_guide"], f"{SUPPORT_BASE}/guide/{d}"), (c["footer_privacy"], f"{PRIVACY_BASE}/{d}"), (c["footer_contact"], "#contact")], more_lang=lang)
     return out
 
 
@@ -683,7 +686,7 @@ def build_guide(lang, c):
 </section>
 </main>
 """
-    out += footer_html(c, [(c["footer_support"], f"{SUPPORT_BASE}/{d}"), (c["footer_guide"], f"{SUPPORT_BASE}/guide/{d}"), (c["footer_privacy"], f"{PRIVACY_BASE}/{d}"), (c["footer_contact"], f"{SUPPORT_BASE}/{d}#contact")], more=True)
+    out += footer_html(c, [(c["footer_support"], f"{SUPPORT_BASE}/{d}"), (c["footer_guide"], f"{SUPPORT_BASE}/guide/{d}"), (c["footer_privacy"], f"{PRIVACY_BASE}/{d}"), (c["footer_contact"], f"{SUPPORT_BASE}/{d}#contact")], more_lang=lang)
     return out
 
 
